@@ -9,6 +9,7 @@ import { apps, certificate } from "@/config/app";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { getBanner } from "@/stores/features/banners/action";
 import config from "@/config/api";
+import { getBlogs } from "@/stores/features/blogs/actions";
 
 export default function HomePage() {
   const { banners } = useAppSelector((state) => state.banners);
@@ -16,6 +17,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getBanner());
+    dispatch(getBlogs({}));
   }, []);
 
   return (
