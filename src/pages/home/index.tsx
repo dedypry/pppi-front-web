@@ -107,6 +107,36 @@ export default function HomePage() {
         </div>
       </div>
 
+      <section className="section-home" id="compro">
+        {/* Left: Video */}
+        <div className="md:col-span-7">
+          <Card className="shadow-lg">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-auto w-full rounded-xl"
+              src="https://res.cloudinary.com/elefin-id/video/upload/assets/solutions/wbgncqwrg89c3iohm39d.mov"
+            />
+          </Card>
+        </div>
+
+        {/* Right: Text Content */}
+        <div className="flex flex-col justify-center space-y-4 md:col-span-5">
+          <h2 className="text-header">Company Profile</h2>
+          <p className="text-sub">
+            Mengenal lebih dekat siapa kami dan apa yang kami lakukan.
+          </p>
+          <p className="text-sm text-gray-500">
+            Video company profile ini memberikan gambaran menyeluruh tentang
+            visi, misi, dan nilai-nilai yang kami pegang. Pelajari bagaimana
+            kami membangun solusi dan berkolaborasi untuk menciptakan dampak
+            nyata di dunia bisnis.
+          </p>
+        </div>
+      </section>
+
       <section className="section-home" id="sertivikasi">
         <div className="flex flex-col justify-center space-y-4 md:col-span-5">
           <h2 className="text-header">Sertifikat Akreditasi</h2>
