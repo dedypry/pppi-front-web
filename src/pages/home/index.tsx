@@ -79,7 +79,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="mt-10 h-[250px] w-full bg-[url('http://127.0.0.1:9876/images/paralax/bg-1.jpg')] bg-cover bg-fixed bg-center bg-no-repeat shadow-lg md:h-[200px]">
+      <div className="mt-10 h-[250px] w-full bg-[url('https://gallery.dpn-pppi.org/images/paralax/bg-1.jpg')] bg-cover bg-fixed bg-center bg-no-repeat shadow-lg md:h-[200px]">
         <div className="container mx-auto grid h-full grid-cols-1 gap-5 bg-black/50 px-5 py-5 md:grid-cols-12 md:px-10">
           <div className="md:col-span-8">
             <div className="text-white">
@@ -106,36 +106,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
-      <section className="section-home" id="compro">
-        {/* Left: Video */}
-        <div className="md:col-span-7">
-          <Card className="shadow-lg">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-auto w-full rounded-xl"
-              src={config.gallery + "/video/compro.mov"}
-            />
-          </Card>
-        </div>
-
-        {/* Right: Text Content */}
-        <div className="flex flex-col justify-center space-y-4 md:col-span-5">
-          <h2 className="text-header">Company Profile</h2>
-          <p className="text-sub">
-            Mengenal lebih dekat siapa kami dan apa yang kami lakukan.
-          </p>
-          <p className="text-sm text-gray-500">
-            Video company profile ini memberikan gambaran menyeluruh tentang
-            visi, misi, dan nilai-nilai yang kami pegang. Pelajari bagaimana
-            kami membangun solusi dan berkolaborasi untuk menciptakan dampak
-            nyata di dunia bisnis.
-          </p>
-        </div>
-      </section>
 
       <section className="section-home" id="sertivikasi">
         <div className="flex flex-col justify-center space-y-4 md:col-span-5">
