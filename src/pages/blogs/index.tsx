@@ -96,7 +96,7 @@ export default function BlogsPage() {
                   radius="full"
                   size="sm"
                   total={blogs?.last_page!}
-                  onChange={(page) => {}}
+                  onChange={(page) => dispatch(getBlogs({ page: page }))}
                 />
               </div>
             </div>
