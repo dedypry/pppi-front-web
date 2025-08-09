@@ -185,7 +185,7 @@ export default function HomePage() {
               alt="Proses Kerjasama"
               className="w-full rounded-xl shadow-md"
               radius="none"
-              src="/images/PROSES_KERJASAMA.png"
+              src={`${config.gallery}/images/PROSES_KERJASAMA.png`}
             />
 
             <div className="space-y-6">
