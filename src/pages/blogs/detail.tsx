@@ -40,10 +40,10 @@ export default function BlogsDetail() {
         subtitle={blog?.category?.description || ""}
         title={blog?.category?.name}
       />
-      <div className="container mx-auto flex flex-col gap-5 px-5 md:px-10">
+      <div className="container mx-auto flex flex-col gap-5 px-5 lg:px-10 my-10">
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-12 md:col-span-9">
-            <Card className="p-2 md:p-3">
+          <div className="col-span-12 lg:col-span-9">
+            <Card className="p-2 lg:p-3">
               <CardHeader>
                 <Image className="w-full object-cover" src={blog?.cover} />
               </CardHeader>
@@ -87,7 +87,7 @@ export default function BlogsDetail() {
 
             <Comment blog={blog!} />
           </div>
-          <div className="col-span-12 md:col-span-3">
+          <div className="col-span-12 lg:col-span-3">
             <ContentRight categories={categories!} />
           </div>
         </div>

@@ -10,7 +10,7 @@ export default function HistoryPage() {
         title="Sejarah PPPI"
       />
 
-      <div className="container mx-auto md:px-10 px-5">
+      <div className="container mx-auto md:px-10 px-5 my-10">
         <Card className="md:px-10 p-2">
           <CardBody>
             <section className="mb-5">

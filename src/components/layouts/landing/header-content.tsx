@@ -8,7 +8,7 @@ interface Props {
 export default function HeaderContent({ children, title, subtitle }: Props) {
   return (
     <div
-      className={`-mt-[60px] mb-10 flex h-[130px] md:h-[200px] w-full items-end bg-gradient-to-b from-primary-900 to-primary-700 pb-2 md:pb-5 shadow-lg`}
+      className={`-mt-[60px] flex h-[130px] md:h-[200px] w-full items-end bg-gradient-to-b from-primary-900 to-primary-700 pb-2 md:pb-5 shadow-lg`}
     >
       <div className="container mx-auto px-10">
         {children}

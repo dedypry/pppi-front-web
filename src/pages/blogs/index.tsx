@@ -38,15 +38,15 @@ export default function BlogsPage() {
         title="Blogs PPPI"
       />
 
-      <div className="container mx-auto flex flex-col gap-5 md:px-10 px-5">
+      <div className="container mx-auto flex flex-col gap-5 lg:px-10 px-5 my-10">
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-12 md:col-span-9">
+          <div className="col-span-12 lg:col-span-9">
             <div className="flex flex-col gap-4">
               <div className="grid grid-cols-12 gap-3">
                 {(blogs?.data || []).map((blog) => (
                   <div
                     key={blog.id}
-                    className="relative col-span-12 mt-10 md:col-span-6"
+                    className="relative col-span-12 mt-10 lg:col-span-6"
                     onClick={() => route(`/blogs/${blog.slug}`)}
                   >
                     <Card
@@ -101,7 +101,7 @@ export default function BlogsPage() {
               </div>
             </div>
           </div>
-          <div className="col-span-12 pt-4 md:col-span-3">
+          <div className="col-span-12 pt-4 lg:col-span-3">
             <ContentRight categories={categories as any} />
           </div>
         </div>
