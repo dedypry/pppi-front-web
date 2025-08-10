@@ -4,7 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useState } from "react";
 
 import { useAppSelector } from "@/stores/hooks";
-import CustomInput from "@/components/custom-input";
+import CustomInput from "@/components/form/custom-input";
 
 interface IForm {
   content: string;

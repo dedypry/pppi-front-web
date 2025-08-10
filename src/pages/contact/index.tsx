@@ -3,8 +3,8 @@ import { Building2, MailCheckIcon, PhoneCall } from "lucide-react";
 
 import ListSidebar from "./list-sidebar";
 
-import CustomInput from "@/components/custom-input";
-import CustomTextArea from "@/components/custom-textarea";
+import CustomInput from "@/components/form/custom-input";
+import CustomTextArea from "@/components/form/custom-textarea";
 import HeaderContent from "@/components/layouts/landing/header-content";
 import { apps } from "@/config/app";
 
