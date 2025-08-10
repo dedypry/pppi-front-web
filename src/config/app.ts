@@ -3,7 +3,8 @@ export const apps = {
   full_name: "Perkumpulan Perawat Pembaharuan Indonesia",
   short_name: "PPPI",
   address: "Jl. Bekasi Timur IX No. 17/05 Jatinegara – Jakarta Timur 13350",
-  phone: "+62 852 1048 6321 / +62 812 8872 8320",
+  phone: "+62 852 1048 6321",
+  phone2: "+62 812 8872 8320",
   email: "dpn.p3i@gmail.com",
 };
 
