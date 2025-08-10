@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ctrl/react-adsense": "^2.0.0",
     "@heroui/react": "^2.8.2",
     "@react-aria/visually-hidden": "3.8.26",
     "@react-types/shared": "3.31.0",

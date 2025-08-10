@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import { dateSchedule } from "@/utils/helpers/formater";
 import { useAppSelector } from "@/stores/hooks";
+import GoogleAds from "@/components/google-adsense";
 
 export default function ListAgenda() {
   const { schedulers } = useAppSelector((state) => state.schedulers);
@@ -19,6 +20,7 @@ export default function ListAgenda() {
 
   return (
     <div className="flex flex-col gap-3 w-full">
+      <GoogleAds />
       {(schedulers?.data || [])?.map((item) => (
         <Card key={item.id} className="w-full">
           <Image className="max-h-[300px]" src={item.cover} />

@@ -4,6 +4,7 @@ import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
 import ContentDivide from "@/components/content-divide";
 import { ICategory } from "@/interface/IBlogs";
 import { IPagination } from "@/interface/IPagination";
+import GoogleAds from "@/components/google-adsense";
 
 interface Props {
   categories: IPagination<ICategory[]>;
@@ -11,6 +12,7 @@ interface Props {
 export default function ContentRight({ categories }: Props) {
   return (
     <div className="flex flex-col gap-5 sticky top-20">
+      <GoogleAds />
       <Card>
         <CardBody className="flex items-center justify-center p-5">
           <Avatar isBordered className="h-32 w-32" src="/avatar.PNG" />

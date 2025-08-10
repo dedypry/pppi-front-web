@@ -15,3 +15,8 @@ export const certificate = [
   "/images/sertifikasi/2.jpg",
   "/images/sertifikasi/3.jpg",
 ];
+
+export const adds = {
+  clientId: "pub-8222106740639870",
+  slot: "4849774159",
+};
