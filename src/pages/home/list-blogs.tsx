@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Button, Card, Image } from "@heroui/react";
+import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "@/stores/hooks";
 import { dateSchedule } from "@/utils/helpers/formater";
 
 export default function ListBlogs() {
   const { blogs } = useAppSelector((state) => state.blogs);
+  const route = useNavigate();
 
   return (
     <div className="flex flex-col gap-5 md:gap-2">
@@ -30,7 +32,7 @@ export default function ListBlogs() {
                   className="bg-primary-200 text-white shadow-md shadow-cyan-100"
                   radius="full"
                   size="sm"
-                  onPress={() => {}}
+                  onPress={() => route(`/blogs/${blog.slug}`)}
                 >
                   Selengkapnya
                 </Button>

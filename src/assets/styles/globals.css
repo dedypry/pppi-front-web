@@ -44,7 +44,7 @@
 }
 
 .section-home{
-    @apply container mx-auto mt-10 grid grid-cols-1 items-center gap-10 px-5 md:grid-cols-12 md:px-10
+    @apply container mx-auto mt-10 grid grid-cols-1 items-start gap-10 px-5 md:grid-cols-12 md:px-10
 }
 
 .text-header{

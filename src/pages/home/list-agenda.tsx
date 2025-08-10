@@ -1,16 +1,24 @@
-import { Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Image,
+} from "@heroui/react";
 import { CalendarCheckIcon } from "lucide-react";
 
 import { dateSchedule } from "@/utils/helpers/formater";
+import { useAppSelector } from "@/stores/hooks";
 
-interface Props {
-  agendas: any[];
-}
-export default function ListAgenda({ agendas }: Props) {
+export default function ListAgenda() {
+  const { schedulers } = useAppSelector((state) => state.schedulers);
+
   return (
     <div className="flex flex-col gap-3 w-full">
-      {agendas?.map((item) => (
+      {(schedulers?.data || [])?.map((item) => (
         <Card key={item.id} className="w-full">
+          <Image className="max-h-[300px]" src={item.cover} />
           <CardHeader className="flex flex-col items-start">
             <p className="text-[20px] font-semibold">{item.title}</p>
             <p className="text-sm italic text-gray-500">{item.subtitle}</p>

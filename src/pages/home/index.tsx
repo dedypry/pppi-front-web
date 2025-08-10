@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { getBanner } from "@/stores/features/banners/action";
 import config from "@/config/api";
 import { getBlogs } from "@/stores/features/blogs/actions";
+import { getScheduler } from "@/stores/features/schedulers/action";
 
 export default function HomePage() {
   const { banners } = useAppSelector((state) => state.banners);
@@ -18,6 +19,7 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(getBanner());
     dispatch(getBlogs({}));
+    dispatch(getScheduler({ pageSize: 5 }));
   }, []);
 
   return (
@@ -77,7 +79,7 @@ export default function HomePage() {
             <p className="text-header">Agenda</p>
             <p className="text-sub">Agenda PPPI</p>
           </section>
-          <ListAgenda agendas={[]} />
+          <ListAgenda />
         </div>
       </section>
 
