@@ -25,7 +25,9 @@ export default function ListBlogs() {
             <div className="flex flex-1 flex-col justify-between px-5 py-5">
               <div className="">
                 <p className="text-[20px] font-semibold">{blog.title}</p>
-                <p>{blog.subtitle}</p>
+                <p className="text-[14px] text-secondary-600 italic">
+                  {blog.subtitle}
+                </p>
               </div>
               <div className="flex items-end justify-between pt-10 md:pt-0">
                 <Button

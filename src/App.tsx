@@ -32,6 +32,7 @@ function App() {
         <Route element={<ComingSoon />} path="/organization" />
         <Route element={<ComingSoon />} path="/lpk-pppi" />
         <Route element={<ComingSoon />} path="/gallery" />
+        <Route element={<ComingSoon />} path="/event/:slug" />
       </Route>
 
       <Route element={<AuthLayout />} path="/">

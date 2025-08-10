@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <HeaderContent
-        subtitle="Hubungi kami untuk informasi lebih lanjut, kerja sama, atau pertanyaan seputar keanggotaan dan kegiatan PPPI."
+        subtitle="Hubungi kami untuk informasi lebih lanjut, kerja sama, atau pertanyaan seputar keanggotaan."
         title="Kontak PPPI"
       />
       <div className="container mx-auto md:px-10 px-5">

@@ -7,12 +7,15 @@ import {
   Image,
 } from "@heroui/react";
 import { CalendarCheckIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import { dateSchedule } from "@/utils/helpers/formater";
 import { useAppSelector } from "@/stores/hooks";
 
 export default function ListAgenda() {
   const { schedulers } = useAppSelector((state) => state.schedulers);
+
+  const route = useNavigate();
 
   return (
     <div className="flex flex-col gap-3 w-full">
@@ -35,6 +38,7 @@ export default function ListAgenda() {
               className="bg-primary-200 text-white shadow-md shadow-cyan-100"
               radius="full"
               size="sm"
+              onPress={() => route(`/event/${item.slug}`)}
             >
               Selengkapnya
             </Button>
