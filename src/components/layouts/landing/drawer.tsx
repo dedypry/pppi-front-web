@@ -63,7 +63,7 @@ export default function LandingDrawer() {
         },
         {
           title: "LPK PPPI",
-          href: "",
+          href: "/lpk-pppi",
           icon: Backpack,
         },
       ],

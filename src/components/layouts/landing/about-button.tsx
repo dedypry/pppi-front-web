@@ -35,13 +35,25 @@ export default function AboutButton({ scrolled }: Props) {
           >
             Sejarah PPPI
           </DropdownItem>
-          <DropdownItem key={"visi"} color="primary" onClick={() => {}}>
+          <DropdownItem
+            key={"visi"}
+            color="primary"
+            onClick={() => route("/visi-misi")}
+          >
             Visi dan Misi
           </DropdownItem>
-          <DropdownItem key={"struktur"} color="primary" onClick={() => {}}>
+          <DropdownItem
+            key={"struktur"}
+            color="primary"
+            onClick={() => route("/organization")}
+          >
             Struktur Organisasi
           </DropdownItem>
-          <DropdownItem key={"lpk"} color="primary">
+          <DropdownItem
+            key={"lpk"}
+            color="primary"
+            onClick={() => route("/lpk-pppi")}
+          >
             LPK PPPI
           </DropdownItem>
         </DropdownMenu>

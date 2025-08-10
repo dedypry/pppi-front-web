@@ -135,7 +135,7 @@ export default function LoginPage() {
               fullWidth
               color="primary"
               variant="bordered"
-              onPress={() => {}}
+              onPress={() => route("/register")}
             >
               Daftar
             </Button>

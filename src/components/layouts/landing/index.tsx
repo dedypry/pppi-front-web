@@ -7,16 +7,19 @@ import {
   NavbarItem,
 } from "@heroui/react";
 import { LayoutDashboard, LogInIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import AboutButton from "./about-button";
 import InformationButton from "./information-button";
 import Footer from "./footer";
+import LandingDrawer from "./drawer";
 
 import { apps } from "@/config/app";
-
-export default function DefaultLayout() {
+interface Props {
+  children?: ReactNode;
+}
+export default function DefaultLayout({ children }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const scrollVal = window.location.pathname === "/" ? 500 : 215;
   const auth = {} as any;
@@ -111,12 +114,13 @@ export default function DefaultLayout() {
           </NavbarItem>
         </NavbarContent>
         <NavbarContent className="md:hidden" justify="end">
-          {/* <LandingDrawer /> */}
+          <LandingDrawer />
         </NavbarContent>
       </Navbar>
 
-      <div className="z-0 pb-10">
+      <div className="z-0">
         <Outlet />
+        {children}
       </div>
       <Footer />
     </div>
