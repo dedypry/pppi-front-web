@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Button, Textarea } from "@heroui/react";
 import { Controller, useForm } from "react-hook-form";
 import { useState } from "react";

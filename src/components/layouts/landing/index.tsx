@@ -12,9 +12,9 @@ import { Link, Outlet } from "react-router-dom";
 
 import AboutButton from "./about-button";
 import InformationButton from "./information-button";
+import Footer from "./footer";
 
 import { apps } from "@/config/app";
-import Footer from "./footer";
 
 export default function DefaultLayout() {
   const [scrolled, setScrolled] = useState(false);

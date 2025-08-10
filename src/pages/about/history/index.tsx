@@ -19,20 +19,21 @@ export default function HistoryPage() {
                 Sejarah keperawatan di Indonesia dimulai pada masa penjajahan
                 Belanda. Pada tahun 1812, Dr. H. F. J. Heijman mendirikan
                 sekolah keperawatan pertama di Batavia (sekarang Jakarta) yang
-                dikenal dengan nama <strong>"Verpleger School"</strong>. Sekolah
-                ini bertujuan untuk mendidik tenaga perawat lokal untuk membantu
+                dikenal dengan nama{" "}
+                <strong>&quot;Verpleger School&quot;</strong>. Sekolah ini
+                bertujuan untuk mendidik tenaga perawat lokal untuk membantu
                 tugas-tugas medis di rumah sakit dan pelayanan kesehatan
                 kolonial.
               </p>
               <p>
                 Pada masa ini, perawat sering disebut sebagai{" "}
-                <em>"juru rawat"</em>. Pendidikan keperawatan masih sangat
-                sederhana dan lebih berfokus pada praktik klinis dasar. Sebagian
-                besar perawat berasal dari kalangan pribumi yang mendapatkan
-                pelatihan singkat.
+                <em>&quot;juru rawat&quot;</em>. Pendidikan keperawatan masih
+                sangat sederhana dan lebih berfokus pada praktik klinis dasar.
+                Sebagian besar perawat berasal dari kalangan pribumi yang
+                mendapatkan pelatihan singkat.
               </p>
             </section>
-            <hr  className="py-5"/>
+            <hr className="py-5" />
 
             <section className="mb-5">
               <h2>Masa Pendudukan Jepang (1942 - 1945)</h2>
@@ -85,7 +86,9 @@ export default function HistoryPage() {
               <p>
                 Saat ini, profesi perawat di Indonesia telah diakui dan diatur
                 oleh undang-undang. Organisasi profesi seperti{" "}
-                <strong>Perkumpulan Perawat Pembaharuan Indonesia (PPPI)</strong>{" "}
+                <strong>
+                  Perkumpulan Perawat Pembaharuan Indonesia (PPPI)
+                </strong>{" "}
                 berperan penting dalam meningkatkan kualitas dan profesionalisme
                 perawat.
               </p>

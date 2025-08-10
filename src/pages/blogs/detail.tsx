@@ -13,12 +13,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import ContentRight from "./content-right";
+import Comment from "./comments";
 
 import HeaderContent from "@/components/layouts/landing/header-content";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { getCategories } from "@/stores/features/categories/actions";
 import { getBlogDetail } from "@/stores/features/blogs/actions";
-import Comment from './comments';
 
 dayjs.extend(relativeTime);
 

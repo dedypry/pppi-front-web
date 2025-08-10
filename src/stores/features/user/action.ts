@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { http } from "@/config/axios";
@@ -30,7 +31,7 @@ export const getUserDetail = createAsyncThunk(
 
       return null;
     }
-  }
+  },
 );
 
 export function handleApprove(data: IApprove, dispatchCallback: () => any) {

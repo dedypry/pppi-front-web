@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { http } from "@/config/axios";
@@ -19,5 +20,5 @@ export const getCategories = createAsyncThunk(
 
       return null;
     }
-  }
+  },
 );
