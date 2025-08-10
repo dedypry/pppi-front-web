@@ -56,11 +56,17 @@ export default function BlogsDetail() {
                 <Image className="w-full object-cover" src={blog?.cover} />
               </CardHeader>
               <CardBody>
-                {blog?.tags.map((e: string) => (
-                  <Chip key={e} className="bg-danger-300 text-white" size="sm">
-                    {e}
-                  </Chip>
-                ))}
+                <div className="flex gap-1">
+                  {blog?.tags.map((e: string) => (
+                    <Chip
+                      key={e}
+                      className="bg-danger-300 text-white"
+                      size="sm"
+                    >
+                      {e}
+                    </Chip>
+                  ))}
+                </div>
                 <p className="my-2 text-[36px] font-bold">{blog?.title}</p>
                 <div className="flex items-center gap-2">
                   <Avatar
@@ -85,19 +91,6 @@ export default function BlogsDetail() {
                   }}
                 />
               </CardBody>
-              <CardFooter>
-                <div className="flex gap-2">
-                  {blog?.tags.map((tag: string, i: number) => (
-                    <Chip
-                      key={i}
-                      className="bg-primary-500 text-white"
-                      size="sm"
-                    >
-                      {tag}
-                    </Chip>
-                  ))}
-                </div>
-              </CardFooter>
             </Card>
 
             <Comment blog={blog!} />
