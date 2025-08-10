@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Chip,
-  Image,
-} from "@heroui/react";
+import { Avatar, Card, CardBody, CardHeader, Chip, Image } from "@heroui/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useEffect } from "react";
