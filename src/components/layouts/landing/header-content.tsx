@@ -13,10 +13,12 @@ export default function HeaderContent({ children, title, subtitle }: Props) {
       <div className="container mx-auto px-10">
         {children}
         <div className="container mx-auto flex flex-col md:gap-2">
-          <p className="text-[20px] md:text-[40px] font-bold text-white">
+          <p className="text-[20px] md:text-[30px] font-bold text-white">
             {title}
           </p>
-          <p className="italic text-gray-300 text-[12px]">{subtitle}</p>
+          <p className="italic text-gray-300 text-[12px] md:text-[16px]">
+            {subtitle}
+          </p>
         </div>
       </div>
     </div>
