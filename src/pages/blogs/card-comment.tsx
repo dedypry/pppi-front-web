@@ -17,24 +17,6 @@ export default function CardComment({ comment }: Props) {
 
   const isOpen = selectedKey instanceof Set && selectedKey.has(commentKey);
 
-  const toggleComment = () => {
-    setSelectedKey((prev) => {
-      const newSet = new Set(prev as Set<string>);
-
-      if (newSet.has(commentKey)) {
-        newSet.delete(commentKey); // close
-      } else {
-        newSet.add(commentKey); // open
-      }
-
-      return newSet;
-    });
-  };
-
-  function handleOpen(val: boolean) {
-    console.log("STATUS", val);
-  }
-
   return (
     <div>
       <Accordion
