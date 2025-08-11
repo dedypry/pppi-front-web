@@ -37,6 +37,10 @@ export default function CardComment({ comment }: Props) {
     });
   };
 
+  function handleOpen(val: boolean) {
+    console.log("STATUS", val);
+  }
+
   return (
     <div>
       <Accordion
@@ -85,6 +89,9 @@ export default function CardComment({ comment }: Props) {
           {comment.children.map((item) => (
             <CardComment key={item.id} comment={item} />
           ))}
+          {!isOpen && (
+            <FormComment blogId={comment.blog_id} parentId={comment.id} />
+          )}
         </div>
       )}
     </div>

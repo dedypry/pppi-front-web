@@ -15,6 +15,7 @@ interface Props {
 }
 export default function FormComment({ blogId, parentId }: Props) {
   const { userCommnet } = useAppSelector((state) => state.auth);
+  const { user } = useAppSelector((state) => state.user);
   const [processing, setProcessing] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -45,6 +46,22 @@ export default function FormComment({ blogId, parentId }: Props) {
       setValue("email", userCommnet.email);
     }
   }, [parentId, userCommnet]);
+
+  useEffect(() => {
+    if (user) {
+      setValue("name", user.name);
+      setValue("email", user.email);
+      setValue("avatar", user.profile?.photo);
+      dispatch(
+        setUserComment({
+          show: true,
+          name: user.name,
+          email: user.email,
+          avatar: user.profile?.photo,
+        }),
+      );
+    }
+  }, [user]);
 
   function onSubmit(data: ICreateBlogComment) {
     setProcessing(true);
