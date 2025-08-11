@@ -1,6 +1,7 @@
 interface Config {
   api: string;
   gallery: string;
+  socket: string;
 }
 
 interface IConfigs {
@@ -15,10 +16,12 @@ const configs: IConfigs = {
   local: {
     api: "http://127.0.0.1:3333",
     gallery: "http://127.0.0.1:9876",
+    socket: "http://127.0.0.1:3334",
   },
   production: {
     api: "https://api.dpn-pppi.org",
     gallery: "https://gallery.dpn-pppi.org",
+    socket: "https://socket.dpn-pppi.org",
   },
 };
 

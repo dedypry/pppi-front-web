@@ -85,7 +85,7 @@ export default function BlogsDetail() {
               </CardBody>
             </Card>
 
-            <Comment blog={blog!} />
+            {blog && <Comment blog={blog} />}
           </div>
           <div className="col-span-12 lg:col-span-3">
             <ContentRight categories={categories!} />

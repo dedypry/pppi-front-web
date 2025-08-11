@@ -1,62 +1,44 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Divider,
-} from "@heroui/react";
-import dayjs from "dayjs";
-import { ReplyIcon } from "lucide-react";
+import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import { useEffect } from "react";
 
 import FormComment from "./form-comment";
+import CardComment from "./card-comment";
 
 import { IBlog } from "@/interface/IBlogs";
+import { socket } from "@/utils/helpers/socket.io";
+import { useAppDispatch, useAppSelector } from "@/stores/hooks";
+import { getBlogComment } from "@/stores/features/blogs/actions";
 
 interface Props {
   blog: IBlog;
 }
 
 export default function Comment({ blog }: Props) {
+  const { comments } = useAppSelector((state) => state.blogs);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getBlogComment({ id: blog.id }));
+    socket.on(`comment-${blog.slug}`, (msg) => {
+      if (msg.action === "refresh") {
+        dispatch(getBlogComment({ id: blog.id }));
+      }
+    });
+
+    return () => {
+      socket.off("comment");
+    };
+  }, []);
+
   return (
     <Card className="mt-5 p-3">
       <CardHeader>
-        <p className="text-[20px] font-bold">
-          {" "}
-          {blog?.comments.length} Comment
-        </p>
+        <p className="text-[20px] font-bold"> {comments.length} Comment</p>
       </CardHeader>
       <CardBody>
-        {blog?.comments?.map((comment) => (
-          <div key={comment.id} className="flex flex-col gap-2">
-            <div className="flex gap-5">
-              <div>
-                <Avatar
-                  isBordered
-                  size="lg"
-                  src={comment?.user?.profile?.photo}
-                />
-              </div>
-              <div>
-                <p className="text-md font-semibold">
-                  {comment.name}{" "}
-                  {dayjs(comment.created_at).format("MMMM, DD YYYY")}
-                </p>
-                <p className="mt-1 text-sm text-gray-500">{comment.content}</p>
-              </div>
-            </div>
-            <div className="flex justify-end">
-              <Button
-                color="primary"
-                radius="full"
-                size="sm"
-                startContent={<ReplyIcon />}
-                variant="bordered"
-              >
-                Balas Comment
-              </Button>
-            </div>
-          </div>
+        {comments.map((comment) => (
+          <CardComment key={comment.id} comment={comment} />
         ))}
 
         <Divider className="my-5" />
@@ -69,7 +51,7 @@ export default function Comment({ blog }: Props) {
           </p>
         </CardHeader>
         <CardBody>
-          <FormComment />
+          <FormComment blogId={blog.id} />
         </CardBody>
       </CardBody>
     </Card>

@@ -1,38 +1,66 @@
-/* eslint-disable no-console */
 import { Button, Textarea } from "@heroui/react";
 import { Controller, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { useAppSelector } from "@/stores/hooks";
+import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import CustomInput from "@/components/form/custom-input";
+import { socket } from "@/utils/helpers/socket.io";
+import { ICreateBlogComment } from "@/interface/IBlogs";
+import { setUserComment } from "@/stores/features/auth/authSlice";
+import UploadAvatar from "@/components/form/upload-avatar";
 
-interface IForm {
-  content: string;
-  name: string;
-  email: string;
-  website: string;
+interface Props {
+  blogId: number;
+  parentId?: number;
 }
-export default function FormComment() {
-  const { user } = useAppSelector((state) => state.user);
+export default function FormComment({ blogId, parentId }: Props) {
+  const { userCommnet } = useAppSelector((state) => state.auth);
   const [processing, setProcessing] = useState(false);
+  const dispatch = useAppDispatch();
+
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
-  } = useForm<IForm>({
+  } = useForm<ICreateBlogComment>({
     defaultValues: {
+      blog_id: blogId,
+      parent_id: undefined,
       content: "",
       name: "",
       email: "",
       website: "",
+      avatar: "",
     },
   });
 
-  function onSubmit(data: IForm) {
-    setProcessing(true);
-    console.log("data", data);
+  useEffect(() => {
+    if (parentId) {
+      setValue("parent_id", parentId);
+    }
 
-    setTimeout(() => setProcessing(false), 5000);
+    if (userCommnet) {
+      setValue("name", userCommnet.name);
+      setValue("email", userCommnet.email);
+    }
+  }, [parentId, userCommnet]);
+
+  function onSubmit(data: ICreateBlogComment) {
+    setProcessing(true);
+
+    socket.emit("sendComment", data);
+    setProcessing(false);
+    setValue("content", "");
+    // dispatch(getBlogComment({ id: blogId }));
+    dispatch(
+      setUserComment({
+        show: !!data.name && !!data.email,
+        name: data.name,
+        email: data.email,
+        avatar: data.avatar,
+      }),
+    );
   }
 
   return (
@@ -50,15 +78,30 @@ export default function FormComment() {
                   errors.content?.message || "Commentar tidak boleh kosong"
                 }
                 isInvalid={!!errors.content}
-                label="Comentar"
+                label="Komentar"
                 placeholder="berikan komentar terbaik anda"
               />
             )}
+            rules={{ required: true }}
           />
         </div>
-        {!user && (
+
+        {!userCommnet?.show && (
           <>
-            <div className="col-span-6">
+            <div className="col-span-3 row-span-3 py-10">
+              <Controller
+                control={control}
+                name="avatar"
+                render={({ field }) => (
+                  <UploadAvatar
+                    file={field.value}
+                    setFile={(file: string) => field.onChange(file)}
+                  />
+                )}
+                rules={{ required: true }}
+              />
+            </div>
+            <div className="col-span-9">
               <Controller
                 control={control}
                 name="name"
@@ -77,7 +120,7 @@ export default function FormComment() {
                 rules={{ required: true }}
               />
             </div>
-            <div className="col-span-6">
+            <div className="col-span-9">
               <Controller
                 control={control}
                 name="email"
@@ -96,7 +139,7 @@ export default function FormComment() {
                 rules={{ required: true }}
               />
             </div>
-            <div className="col-span-12">
+            <div className="col-span-9">
               <Controller
                 control={control}
                 name="website"
