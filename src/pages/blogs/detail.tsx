@@ -11,6 +11,7 @@ import HeaderContent from "@/components/layouts/landing/header-content";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { getCategories } from "@/stores/features/categories/actions";
 import { getBlogDetail } from "@/stores/features/blogs/actions";
+import { decodeHtml } from "@/utils/helpers/decode-html";
 
 dayjs.extend(relativeTime);
 
@@ -25,14 +26,6 @@ export default function BlogsDetail() {
     dispatch(getCategories({}));
     dispatch(getBlogDetail({ slug: slug as any }));
   }, []);
-
-  function decodeHtml(html: string) {
-    const txt = document.createElement("textarea");
-
-    txt.innerHTML = html;
-
-    return txt.value;
-  }
 
   return (
     <>
@@ -64,7 +57,7 @@ export default function BlogsDetail() {
                   <Avatar
                     isBordered
                     size="sm"
-                    src={blog?.writer?.profile?.photo || "/avatar.PNG"}
+                    src={blog?.writer?.profile?.photo}
                   />
                   <p className="text-xs text-gray-800">
                     {blog?.writer.name} -{" "}

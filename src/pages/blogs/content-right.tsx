@@ -5,22 +5,34 @@ import ContentDivide from "@/components/content-divide";
 import { ICategory } from "@/interface/IBlogs";
 import { IPagination } from "@/interface/IPagination";
 import GoogleAds from "@/components/google-adsense";
+import { useAppSelector } from "@/stores/hooks";
+import { decodeHtml } from "@/utils/helpers/decode-html";
 
 interface Props {
   categories: IPagination<ICategory[]>;
 }
 export default function ContentRight({ categories }: Props) {
+  const { blog } = useAppSelector((state) => state.blogs);
+
   return (
     <div className="flex flex-col gap-5 sticky top-20">
       <GoogleAds />
       <Card>
         <CardBody className="flex items-center justify-center p-5">
-          <Avatar isBordered className="h-32 w-32" src="/avatar.PNG" />
-          <p className="my-5 text-[20px] font-bold">Hi, Saya Dedy Priyatna</p>
+          <Avatar
+            isBordered
+            className="h-32 w-32"
+            src={blog?.writer?.profile?.photo}
+          />
+          <p className="my-5 text-[20px] font-bold">
+            Hi, Saya {blog?.writer.name}
+          </p>
           <p className="text-center text-xs leading-relaxed text-gray-400">
-            Saya Dedy priyatna, seorang suami dan ayah. Saya menyukai fotografi,
-            programer, perjalanan, dan alam. Saya bekerja sebagai penulis dan
-            blogger dengan pengalaman selama 5 tahun hingga saat ini.
+            <div
+              dangerouslySetInnerHTML={{
+                __html: decodeHtml(blog?.writer?.bio!),
+              }}
+            />
           </p>
           <div className="mt-5 flex gap-2">
             <FacebookIcon className="text-blue-700" />

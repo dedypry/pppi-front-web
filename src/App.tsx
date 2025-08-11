@@ -11,6 +11,7 @@ import ContactPage from "./pages/contact";
 import RegisterPage from "./pages/auth/Register";
 import ErrorNotFoundPage from "./pages/errors/not-found";
 import ComingSoon from "./pages/errors/cooming-soon";
+import VisiMisiPage from "./pages/about/visi-misi";
 
 function App() {
   return (
@@ -26,9 +27,9 @@ function App() {
 
         <Route element={<ContactPage />} path="/contact" />
         <Route element={<RegisterPage />} path="/register" />
+        <Route element={<VisiMisiPage />} path="/visi-misi" />
 
         {/* Comming soon */}
-        <Route element={<ComingSoon />} path="/visi-misi" />
         <Route element={<ComingSoon />} path="/organization" />
         <Route element={<ComingSoon />} path="/lpk-pppi" />
         <Route element={<ComingSoon />} path="/gallery" />
