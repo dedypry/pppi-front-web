@@ -13,7 +13,7 @@ export default function ListBlogs() {
   return (
     <div className="flex flex-col gap-5 md:gap-2">
       {blogs?.data?.map((blog, i) => (
-        <div key={i} onClick={() => {}}>
+        <div key={i} onClick={() => route(`/blogs/${blog.slug}`)}>
           <Card
             key={blog.id}
             className="flex cursor-pointer flex-col hover:bg-primary-50 md:flex-row"
