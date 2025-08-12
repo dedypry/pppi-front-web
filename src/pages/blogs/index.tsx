@@ -6,6 +6,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Image,
   Pagination,
 } from "@heroui/react";
 import { useEffect } from "react";
@@ -78,7 +79,7 @@ export default function BlogsPage() {
                       </CardFooter>
                     </Card>
                     <div className="absolute -top-10 px-5">
-                      <img
+                      <Image
                         alt=""
                         className="h-[300px] w-full rounded-lg object-cover shadow-md"
                         src={blog.cover}

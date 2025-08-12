@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import ListBlogs from "./list-blogs";
 import ListAgenda from "./list-agenda";
+import PackageSection from "./sections/package-section";
 
 import Carousel from "@/components/Carousel";
 import { apps, certificate } from "@/config/app";
@@ -171,7 +172,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="my-10 bg-primary-50 py-16" id="proces_kerjasama">
+      <section className="mt-10 bg-primary-50 py-16" id="proces_kerjasama">
         <div className="container mx-auto px-5 md:px-10">
           {/* Title */}
           <div className="mb-10 text-center">
@@ -211,76 +212,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16" id="package">
-        <div className="container mx-auto px-5 md:px-10">
-          {/* Title */}
-          <div className="mb-10 text-center">
-            <h2 className="text-header">Paket Kemitraan</h2>
-            <p className="text-sub">
-              Pilih paket yang paling sesuai dengan kebutuhan dan skala bisnis
-              Anda.
-            </p>
-          </div>
-
-          {/* Package Cards */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              {
-                name: "Starter",
-                price: "Gratis",
-                benefits: [
-                  "Akses Dasar",
-                  "Newsletter Bulanan",
-                  "Komunitas Mitra",
-                ],
-                highlight: false,
-              },
-              {
-                name: "Professional",
-                price: "Rp 499.000 / tahun",
-                benefits: [
-                  "Semua fitur Starter",
-                  "Dashboard Mitra",
-                  "Prioritas Bantuan",
-                ],
-                highlight: true,
-              },
-              {
-                name: "Enterprise",
-                price: "Hubungi Kami",
-                benefits: [
-                  "Fitur Kustom",
-                  "Integrasi API",
-                  "Akun Manajer Khusus",
-                ],
-                highlight: false,
-              },
-            ].map((pkg, index) => (
-              <div
-                key={index}
-                className={`rounded-xl border p-6 shadow-md ${pkg.highlight ? "border-primary bg-white" : "bg-white"}`}
-              >
-                <h3 className="mb-2 text-xl font-bold text-gray-800">
-                  {pkg.name}
-                </h3>
-                <p className="mb-4 text-lg font-semibold text-primary">
-                  {pkg.price}
-                </p>
-                <ul className="mb-6 space-y-2 text-sm text-gray-600">
-                  {pkg.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      ✅ {benefit}
-                    </li>
-                  ))}
-                </ul>
-                <button className="w-full rounded-full bg-primary px-4 py-2 text-white transition hover:bg-primary/90">
-                  {pkg.price === "Gratis" ? "Mulai Sekarang" : "Pilih Paket"}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PackageSection />
     </div>
   );
 }

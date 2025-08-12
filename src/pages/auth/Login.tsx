@@ -6,6 +6,7 @@ import {
   CardHeader,
   Checkbox,
   Divider,
+  Image,
 } from "@heroui/react";
 import { MailIcon } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -61,7 +62,7 @@ export default function LoginPage() {
       <form className="w-full max-w-md px-5" onSubmit={handleSubmit(onSubmit)}>
         <Card className="w-full md:p-5 p-2">
           <CardHeader className="flex justify-center gap-3">
-            <img alt="Logo" height={50} src={apps.logo} width={50} />
+            <Image alt="Logo" height={50} src={apps.logo} width={50} />
             <h1 className="text-[30px] font-bold">{apps?.short_name}</h1>
           </CardHeader>
           <CardHeader className="flex justify-center">
