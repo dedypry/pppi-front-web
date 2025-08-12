@@ -12,6 +12,7 @@ import { getBanner } from "@/stores/features/banners/action";
 import config from "@/config/api";
 import { getBlogs } from "@/stores/features/blogs/actions";
 import { getScheduler } from "@/stores/features/schedulers/action";
+import Head from "@/components/Head";
 
 export default function HomePage() {
   const { banners } = useAppSelector((state) => state.banners);
@@ -25,6 +26,7 @@ export default function HomePage() {
 
   return (
     <div className="pb-10">
+      {/* <Head title="Beranda" /> */}
       <Carousel
         autoPlay={true}
         className="-mt-[60px]"
