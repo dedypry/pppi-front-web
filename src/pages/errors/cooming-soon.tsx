@@ -1,6 +1,7 @@
-import HeaderContent from "@/components/layouts/landing/header-content";
 import { Card, CardBody, Button } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
+
+import HeaderContent from "@/components/layouts/landing/header-content";
 
 export default function ComingSoon() {
   const navigate = useNavigate();

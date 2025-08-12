@@ -4,7 +4,6 @@ import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
 import ContentDivide from "@/components/content-divide";
 import { ICategory } from "@/interface/IBlogs";
 import { IPagination } from "@/interface/IPagination";
-import GoogleAds from "@/components/google-adsense";
 import { useAppSelector } from "@/stores/hooks";
 import { decodeHtml } from "@/utils/helpers/decode-html";
 
@@ -16,7 +15,6 @@ export default function ContentRight({ categories }: Props) {
 
   return (
     <div className="flex flex-col gap-5 sticky top-20">
-      <GoogleAds />
       <Card>
         <CardBody className="flex items-center justify-center p-5">
           <Avatar

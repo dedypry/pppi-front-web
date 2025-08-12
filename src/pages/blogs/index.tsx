@@ -19,7 +19,6 @@ import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { getBlogs } from "@/stores/features/blogs/actions";
 import { blogDate, dateHuman } from "@/utils/helpers/formater";
 import { getCategories } from "@/stores/features/categories/actions";
-import GoogleAds from "@/components/google-adsense";
 
 export default function BlogsPage() {
   const { blogs } = useAppSelector((state) => state.blogs);
@@ -108,7 +107,6 @@ export default function BlogsPage() {
           </div>
         </div>
       </div>
-      <GoogleAds />
     </>
   );
 }

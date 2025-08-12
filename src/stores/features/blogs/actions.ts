@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { http } from "@/config/axios";
@@ -42,7 +44,6 @@ export const getBlogComment = createAsyncThunk(
 
       return data;
     } catch (error) {
-
       return [];
     }
   },

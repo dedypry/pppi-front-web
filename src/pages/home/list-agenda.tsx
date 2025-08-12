@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 
 import { dateSchedule } from "@/utils/helpers/formater";
 import { useAppSelector } from "@/stores/hooks";
-import GoogleAds from "@/components/google-adsense";
 
 export default function ListAgenda() {
   const { schedulers } = useAppSelector((state) => state.schedulers);
@@ -63,7 +62,6 @@ export default function ListAgenda() {
           <p className="text-gray-600 text-sm">Dr. BM.PK & Astuti Yuri Nurs</p>
         </CardBody>
       </Card>
-      <GoogleAds />
     </div>
   );
 }

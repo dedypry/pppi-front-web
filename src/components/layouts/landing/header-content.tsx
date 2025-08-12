@@ -1,5 +1,6 @@
-import Head from "@/components/Head";
 import { ReactNode } from "react";
+
+import Head from "@/components/Head";
 
 interface Props {
   children?: ReactNode;
@@ -9,7 +10,7 @@ interface Props {
 export default function HeaderContent({ children, title, subtitle }: Props) {
   return (
     <>
-      <Head title={title!} description={subtitle} />
+      <Head description={subtitle} title={title!} />
       <div
         className={`-mt-[60px] flex h-[130px] md:h-[200px] w-full items-end bg-gradient-to-b from-primary-900 to-primary-700 pb-2 md:pb-5 shadow-lg`}
       >
