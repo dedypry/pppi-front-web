@@ -20,7 +20,6 @@ export default function ListAgenda() {
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <GoogleAds />
       {(schedulers?.data || [])?.map((item) => (
         <Card key={item.id} className="w-full" data-aos="fade-left">
           <Image className="max-h-[300px]" src={item.cover} />
@@ -64,6 +63,7 @@ export default function ListAgenda() {
           <p className="text-gray-600 text-sm">Dr. BM.PK & Astuti Yuri Nurs</p>
         </CardBody>
       </Card>
+      <GoogleAds />
     </div>
   );
 }
