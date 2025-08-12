@@ -16,14 +16,15 @@ import Footer from "./footer";
 import LandingDrawer from "./drawer";
 
 import { apps } from "@/config/app";
+import { useAppSelector } from "@/stores/hooks";
 interface Props {
   children?: ReactNode;
 }
 export default function DefaultLayout({ children }: Props) {
+  const { user } = useAppSelector((state) => state.user);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-  const scrollVal = pathname === "/" ? 500 : 160;
-  const auth = {} as any;
+  const scrollVal = 160;
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,7 +38,7 @@ export default function DefaultLayout({ children }: Props) {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="w-screen">
@@ -45,7 +46,7 @@ export default function DefaultLayout({ children }: Props) {
         <div className="container mx-auto flex justify-between px-8 text-sm text-white">
           <p>{apps.full_name}</p>
 
-          {auth.user ? (
+          {user ? (
             <div>
               <Link className="flex items-center gap-2 text-white" to="/">
                 <LayoutDashboard size={14} /> <p>Dashboard</p>
