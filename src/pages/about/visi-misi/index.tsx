@@ -7,7 +7,7 @@ export default function VisiMisiPage() {
     <>
       <HeaderContent
         subtitle="Menelusuri perjalanan dan dedikasi PPPI dalam memajukan profesi keperawatan di Indonesia."
-        title="Sejarah PPPI"
+        title="Visi Misi PPPI"
       />
 
       <div className="container mx-auto md:px-10 px-5 my-10">

@@ -29,10 +29,7 @@ export default function BlogsDetail() {
 
   return (
     <>
-      <HeaderContent
-        subtitle={blog?.category?.description || ""}
-        title={blog?.category?.name}
-      />
+      <HeaderContent subtitle={blog?.title || ""} title={blog?.subtitle} />
       <div className="container mx-auto flex flex-col gap-5 px-5 lg:px-10 my-10">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 lg:col-span-9">

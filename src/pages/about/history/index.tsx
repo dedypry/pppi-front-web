@@ -5,6 +5,7 @@ import HeaderContent from "@/components/layouts/landing/header-content";
 export default function HistoryPage() {
   return (
     <>
+    
       <HeaderContent
         subtitle="Menelusuri perjalanan dan dedikasi PPPI dalam memajukan profesi keperawatan di Indonesia."
         title="Sejarah PPPI"

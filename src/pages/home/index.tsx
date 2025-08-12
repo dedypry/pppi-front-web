@@ -26,7 +26,7 @@ export default function HomePage() {
 
   return (
     <div className="pb-10">
-      {/* <Head title="Beranda" /> */}
+      <Head description={apps.full_name} />
       <Carousel
         autoPlay={true}
         className="-mt-[60px]"
