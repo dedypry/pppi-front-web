@@ -22,7 +22,7 @@ export default function AboutButton({ scrolled }: Props) {
       <Dropdown isOpen={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
         <DropdownTrigger>
           <p
-            className={`link-anim cursor-pointer ${scrolled ? "text-gray-800" : "text-white"}`}
+            className={`link-anim cursor-pointer ${scrolled ? "text-gray-600" : "text-white"}`}
           >
             Tentang Kami
           </p>

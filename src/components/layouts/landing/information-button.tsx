@@ -22,7 +22,7 @@ export default function InformationButton({ scrolled }: Props) {
       <Dropdown isOpen={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
         <DropdownTrigger>
           <p
-            className={`link-anim cursor-pointer ${scrolled ? "text-gray-800" : "text-white"}`}
+            className={`link-anim cursor-pointer ${scrolled ? "text-gray-600" : "text-white"}`}
           >
             Informasi
           </p>
@@ -35,7 +35,11 @@ export default function InformationButton({ scrolled }: Props) {
           >
             Blogs
           </DropdownItem>
-          <DropdownItem key={"galesy"} color="primary" onClick={() => {}}>
+          <DropdownItem
+            key={"galesy"}
+            color="primary"
+            onClick={() => route("/gallery")}
+          >
             Gallery
           </DropdownItem>
         </DropdownMenu>

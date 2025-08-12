@@ -8,7 +8,7 @@ import {
 } from "@heroui/react";
 import { LayoutDashboard, LogInIcon } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 import AboutButton from "./about-button";
 import InformationButton from "./information-button";
@@ -21,7 +21,8 @@ interface Props {
 }
 export default function DefaultLayout({ children }: Props) {
   const [scrolled, setScrolled] = useState(false);
-  const scrollVal = window.location.pathname === "/" ? 500 : 215;
+  const { pathname } = useLocation();
+  const scrollVal = pathname === "/" ? 500 : 160;
   const auth = {} as any;
 
   useEffect(() => {
@@ -77,12 +78,12 @@ export default function DefaultLayout({ children }: Props) {
           <Link className="flex items-center gap-2" to="/">
             <Avatar size="md" src={apps.logo} />
             <p
-              className={`m-0 hidden p-0 text-[30px] font-bold ${scrolled ? "text-gray-800" : "text-white"} md:flex`}
+              className={`m-0 hidden p-0 text-[30px] font-bold ${scrolled ? "text-gray-600" : "text-white"} md:flex`}
             >
               {apps.short_name}
             </p>
             <div
-              className={`flex flex-col ${scrolled ? "text-gray-800" : "text-white"} md:hidden`}
+              className={`flex flex-col ${scrolled ? "text-gray-600" : "text-white"} md:hidden`}
             >
               <p className="m-0 p-0 font-bold">{apps.short_name}</p>
               <p className="m-0 p-0 text-[10px]">{apps.full_name}</p>
@@ -92,7 +93,7 @@ export default function DefaultLayout({ children }: Props) {
         <NavbarContent className="hidden md:flex" justify="end">
           <NavbarItem>
             <Link
-              className={`link-anim ${scrolled ? "text-gray-800" : "text-white"}`}
+              className={`link-anim ${scrolled ? "text-gray-600" : "text-white"}`}
               to="/"
             >
               Beranda
@@ -106,7 +107,7 @@ export default function DefaultLayout({ children }: Props) {
           </NavbarItem>
           <NavbarItem>
             <Link
-              className={`link-anim ${scrolled ? "text-gray-800" : "text-white"}`}
+              className={`link-anim ${scrolled ? "text-gray-600" : "text-white"}`}
               to="/contact"
             >
               Kontak
