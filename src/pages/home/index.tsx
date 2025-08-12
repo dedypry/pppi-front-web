@@ -115,7 +115,7 @@ export default function HomePage() {
       <section className="section-home" id="compro">
         {/* Left: Video */}
         <div className="md:col-span-7">
-          <Card className="shadow-lg">
+          <Card className="shadow-lg" data-aos="zoom-in">
             <video
               autoPlay
               loop
@@ -128,7 +128,10 @@ export default function HomePage() {
         </div>
 
         {/* Right: Text Content */}
-        <div className="flex flex-col justify-center space-y-4 md:col-span-5">
+        <div
+          className="flex flex-col justify-center space-y-4 md:col-span-5"
+          data-aos="zoom-in"
+        >
           <h2 className="text-header">Company Profile</h2>
           <p className="text-sub">
             Mengenal lebih dekat siapa kami dan apa yang kami lakukan.
@@ -142,7 +145,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-home" id="sertivikasi">
+      <section className="section-home" data-aos="fade-right" id="sertivikasi">
         <div className="flex flex-col justify-center space-y-4 md:col-span-5">
           <h2 className="text-header">Sertifikat Akreditasi</h2>
           <p className="text-sub">
@@ -154,7 +157,7 @@ export default function HomePage() {
                         bagaimana kami membangun solusi dan berkolaborasi untuk menciptakan dampak nyata di dunia bisnis.
                     </p> */}
         </div>
-        <div className="md:col-span-7">
+        <div className="md:col-span-7" data-aos="fade-left">
           <Carousel autoPlay={true}>
             {certificate.map((item, i) => (
               <Card
@@ -175,7 +178,7 @@ export default function HomePage() {
       <section className="mt-10 bg-primary-50 py-16" id="proces_kerjasama">
         <div className="container mx-auto px-5 md:px-10">
           {/* Title */}
-          <div className="mb-10 text-center">
+          <div className="mb-10 text-center" data-aos="zoom-in">
             <h2 className="text-header">
               Proses Kerjasama dengan {apps.short_name}
             </h2>
@@ -189,6 +192,7 @@ export default function HomePage() {
             <Image
               alt="Proses Kerjasama"
               className="w-full rounded-xl shadow-md"
+              data-aos="zoom-in-up"
               radius="none"
               src={`${config.gallery}/images/PROSES_KERJASAMA.png`}
             />
@@ -200,7 +204,11 @@ export default function HomePage() {
                 "Tandatangani perjanjian kerjasama",
                 "Mulai berkolaborasi bersama dalam proyek atau program",
               ].map((step, index) => (
-                <div key={index} className="flex items-start gap-4">
+                <div
+                  key={index}
+                  className="flex items-start gap-4"
+                  data-aos="zoom-in"
+                >
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary font-semibold text-white">
                     {index + 1}
                   </div>

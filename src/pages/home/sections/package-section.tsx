@@ -23,7 +23,10 @@ export default function PackageSection() {
   return (
     <section className="bg-gray-50 py-16" id="package">
       <div className="container mx-auto px-5 md:px-10">
-        <h2 className="text-3xl font-bold text-center mb-10 text-gray-700">
+        <h2
+          className="text-3xl font-bold text-center mb-10 text-gray-700"
+          data-aos="fade-down"
+        >
           Peningkatan Kompetensi
         </h2>
         <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -31,6 +34,7 @@ export default function PackageSection() {
             <Chip
               key={type}
               className={`border ${borderColors[i % borderColors.length]}`}
+              data-aos="fade-down"
               size="lg"
               variant="bordered"
             >
@@ -43,6 +47,7 @@ export default function PackageSection() {
             <Card
               key={i}
               className={`w-full text-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer `}
+              data-aos="fade-down"
               style={{
                 backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
               }}
@@ -83,7 +88,10 @@ export default function PackageSection() {
       </div>
       <Divider className="my-10 border border-primary" />
       <div className="container mx-auto px-5 md:px-10 mt-10">
-        <h2 className="text-3xl font-bold text-center mb-10 text-gray-700">
+        <h2
+          className="text-3xl font-bold text-center mb-10 text-gray-700"
+          data-aos="fade-down"
+        >
           Pelatihan di PPPI
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -91,6 +99,7 @@ export default function PackageSection() {
             <Card
               key={i}
               className={`w-full text-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer `}
+              data-aos="fade-down"
               style={{
                 backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
               }}

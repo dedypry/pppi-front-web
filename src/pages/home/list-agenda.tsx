@@ -22,7 +22,7 @@ export default function ListAgenda() {
     <div className="flex flex-col gap-3 w-full">
       <GoogleAds />
       {(schedulers?.data || [])?.map((item) => (
-        <Card key={item.id} className="w-full">
+        <Card key={item.id} className="w-full" data-aos="fade-left">
           <Image className="max-h-[300px]" src={item.cover} />
           <CardHeader className="flex flex-col items-start">
             <p className="text-[20px] font-semibold">{item.title}</p>
@@ -52,6 +52,7 @@ export default function ListAgenda() {
           allowFullScreen
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           className="h-[220px] w-full"
+          data-aos="fade-left"
           referrerPolicy="strict-origin-when-cross-origin"
           src="https://www.youtube.com/embed/d4ge0pwucxc?si=H2dw4ftzTLlJlPh5"
           title="YouTube video player"

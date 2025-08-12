@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import AOS from "aos";
 
 import AuthLayout from "./components/layouts/auth";
 import LoginPage from "./pages/auth/Login";
@@ -12,7 +13,10 @@ import RegisterPage from "./pages/auth/Register";
 import ErrorNotFoundPage from "./pages/errors/not-found";
 import ComingSoon from "./pages/errors/cooming-soon";
 import VisiMisiPage from "./pages/about/visi-misi";
-
+import "aos/dist/aos.css";
+AOS.init({
+  duration: 1000,
+});
 function App() {
   return (
     <Routes>

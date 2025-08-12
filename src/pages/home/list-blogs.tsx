@@ -17,6 +17,7 @@ export default function ListBlogs() {
           <Card
             key={blog.id}
             className="flex cursor-pointer flex-col hover:bg-primary-50 md:flex-row"
+            data-aos="fade-in"
           >
             <Image
               className="h-[200px] w-auto object-cover md:h-[150px] md:w-[200px]"
