@@ -13,6 +13,7 @@ import config from "@/config/api";
 import { getBlogs } from "@/stores/features/blogs/actions";
 import { getScheduler } from "@/stores/features/schedulers/action";
 import Head from "@/components/Head";
+import { getPackage } from "@/stores/features/packages/action";
 
 export default function HomePage() {
   const { banners } = useAppSelector((state) => state.banners);
@@ -22,6 +23,7 @@ export default function HomePage() {
     dispatch(getBanner());
     dispatch(getBlogs({}));
     dispatch(getScheduler({ pageSize: 5 }));
+    dispatch(getPackage());
   }, []);
 
   return (
