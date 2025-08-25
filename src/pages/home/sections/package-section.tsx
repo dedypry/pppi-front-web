@@ -17,8 +17,6 @@ const borderColors = [
   "border-yellow-400",
 ];
 
-const types = ["Webinar", "Seminar", "Workshop", "Symposium", "MOOC"];
-
 export default function PackageSection() {
   const { packages } = useAppSelector((state) => state.packages);
 
