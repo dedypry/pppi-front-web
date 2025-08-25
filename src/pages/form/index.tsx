@@ -34,12 +34,9 @@ export default function FormPage() {
       .get(`/form/${data}`)
       .then(({ data }) => {
         setForm(data);
-        console.log(data);
       })
       .catch((err) => notifyError(err));
   }
-
-  console.log(formData);
 
   if (!formList) return <Loading />;
 
@@ -48,7 +45,6 @@ export default function FormPage() {
   }
 
   function handleSubmit() {
-    const errorData: any = {};
     let isClean = true;
 
     const formHeaders = [...formList?.form_headers!];
@@ -74,7 +70,6 @@ export default function FormPage() {
       }
     }
 
-    console.log("FORM", formHeaders);
     if (!isClean) {
       return;
     } else {
@@ -149,7 +144,7 @@ export default function FormPage() {
             ))}
           </CardBody>
           <CardFooter className="flex justify-end">
-            <Button color="primary" onPress={handleSubmit}>
+            <Button color="primary" isLoading={loading} onPress={handleSubmit}>
               Submit
             </Button>
           </CardFooter>
