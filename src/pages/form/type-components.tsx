@@ -4,6 +4,7 @@ import CustomInput from "@/components/form/custom-input";
 import CustomSelect from "@/components/form/custom-select";
 import { IFormHeader } from "@/interface/IForm";
 import AllDistrictList from "@/components/regions/all-district";
+import CustomDatePicker from "@/components/form/custom-date-picker";
 
 interface Props {
   data: IFormHeader;
@@ -72,6 +73,22 @@ export default function TypeComponents({
             isInvalid: !!error,
             errorMessage: error,
           })}
+        />
+      );
+      break;
+
+    case "date":
+      return (
+        <CustomDatePicker
+          label={data.title}
+          {...(data.required && {
+            isInvalid: !!error,
+            errorMessage: error,
+          })}
+          labelPlacement="inside"
+          placeholder={`Masukan ${data.title}`}
+          value={value}
+          onChageValue={(date) => setValue(date)}
         />
       );
       break;

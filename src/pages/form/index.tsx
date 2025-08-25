@@ -11,6 +11,7 @@ import Loading from "@/components/loading/Loading";
 import { IFormList } from "@/interface/IForm";
 import CustomInput from "@/components/form/custom-input";
 import { confirmSweet } from "@/utils/helpers/confirm";
+import "./style.css";
 
 export default function FormPage() {
   const [loading, setLoading] = useState(false);
@@ -114,42 +115,58 @@ export default function FormPage() {
     <>
       <HeaderContent subtitle="Isi Form Dibawah ini" title={formList.title} />
 
-      <div className="container mx-auto my-10">
-        <Card className="p-2">
-          <CardHeader as="h4">
-            {formList.member_required
-              ? "Wajib Menjadi Anggota"
-              : "Tidak Wajib Menjadi Anggota"}
-          </CardHeader>
-          <CardBody className="flex flex-col gap-5">
-            {formList.member_required && (
-              <CustomInput
-                description="Jika anda belum ada NIA, silahkan registrasi anggota baru"
-                errorMessage={errors.nia}
-                isInvalid={!!errors.nia}
-                label="Nia"
-                labelPlacement="inside"
-                placeholder={`Masukan No. Nia`}
-                value={formData.nia}
-                onValueChange={(val) => handleSetForm("nia", val)}
-              />
-            )}
-            {(formList?.form_headers || []).map((item) => (
-              <TypeComponents
-                key={item.id}
-                data={item}
-                error={errors[item.key]}
-                setValue={(val) => handleSetForm(item.key, val)}
-                value={formData[item.key]}
-              />
-            ))}
-          </CardBody>
-          <CardFooter className="flex justify-end">
-            <Button color="primary" isLoading={loading} onPress={handleSubmit}>
-              Submit
-            </Button>
-          </CardFooter>
-        </Card>
+      <div className="container mx-auto my-10 px-10">
+        <div className="flex gap-2 flex-col md:flex-row">
+          <Card className="p-2 w-full order-2 md:order-1">
+            <CardHeader as="h4">
+              {formList.member_required
+                ? "Wajib Menjadi Anggota"
+                : "Tidak Wajib Menjadi Anggota"}
+            </CardHeader>
+            <CardBody className="flex flex-col gap-5">
+              {formList.member_required && (
+                <CustomInput
+                  description="Jika anda belum ada NIA, silahkan registrasi anggota baru"
+                  errorMessage={errors.nia}
+                  isInvalid={!!errors.nia}
+                  label="Nia"
+                  labelPlacement="inside"
+                  placeholder={`Masukan No. Nia`}
+                  value={formData.nia}
+                  onValueChange={(val) => handleSetForm("nia", val)}
+                />
+              )}
+              {(formList?.form_headers || []).map((item) => (
+                <TypeComponents
+                  key={item.id}
+                  data={item}
+                  error={errors[item.key]}
+                  setValue={(val) => handleSetForm(item.key, val)}
+                  value={formData[item.key]}
+                />
+              ))}
+            </CardBody>
+            <CardFooter className="flex justify-end">
+              <Button
+                color="primary"
+                isLoading={loading}
+                onPress={handleSubmit}
+              >
+                Submit
+              </Button>
+            </CardFooter>
+          </Card>
+          {formList.description && (
+            <Card className="md:w-lg p-2 w-full order-1 md:order-2">
+              <CardHeader as="h4">Keterangan</CardHeader>
+              <CardBody>
+                <div
+                  dangerouslySetInnerHTML={{ __html: formList.description }}
+                />
+              </CardBody>
+            </Card>
+          )}
+        </div>
       </div>
     </>
   );
