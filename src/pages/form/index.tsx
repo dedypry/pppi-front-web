@@ -138,6 +138,7 @@ export default function FormPage() {
               <TypeComponents
                 key={item.id}
                 data={item}
+                error={errors[item.key]}
                 setValue={(val) => handleSetForm(item.key, val)}
                 value={formData[item.key]}
               />

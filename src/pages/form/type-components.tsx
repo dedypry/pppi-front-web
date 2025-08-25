@@ -8,13 +8,23 @@ import AllDistrictList from "@/components/regions/all-district";
 interface Props {
   data: IFormHeader;
   value: any;
+  error?: string;
   setValue: (val: any) => void;
 }
-export default function TypeComponents({ data, value, setValue }: Props) {
+export default function TypeComponents({
+  data,
+  value,
+  setValue,
+  error,
+}: Props) {
   switch (data.type) {
     case "select":
       return (
         <CustomSelect
+          {...(data.required && {
+            isInvalid: !!error,
+            errorMessage: error,
+          })}
           label={data.title}
           labelPlacement="inside"
           placeholder={`Masukan ${data.title}`}
@@ -34,7 +44,15 @@ export default function TypeComponents({ data, value, setValue }: Props) {
 
     case "radio":
       return (
-        <RadioGroup label={data.title} value={value} onValueChange={setValue}>
+        <RadioGroup
+          label={data.title}
+          value={value}
+          onValueChange={setValue}
+          {...(data.required && {
+            isInvalid: !!error,
+            errorMessage: error,
+          })}
+        >
           {data.options.map((e) => (
             <Radio key={e.label} value={e.label}>
               {e.label}
@@ -50,6 +68,10 @@ export default function TypeComponents({ data, value, setValue }: Props) {
           labelPlacement="inside"
           setValue={setValue}
           value={value}
+          {...(data.required && {
+            isInvalid: !!error,
+            errorMessage: error,
+          })}
         />
       );
       break;
@@ -62,6 +84,10 @@ export default function TypeComponents({ data, value, setValue }: Props) {
           placeholder={`Masukan ${data.title}`}
           value={value}
           onValueChange={setValue}
+          {...(data.required && {
+            isInvalid: !!error,
+            errorMessage: error,
+          })}
         />
       );
       break;
