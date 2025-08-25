@@ -107,7 +107,7 @@ export default function FormPage() {
           notifyError(err);
         }
       })
-      .finally(() => setLoading(true));
+      .finally(() => setLoading(false));
   }
 
   return (
