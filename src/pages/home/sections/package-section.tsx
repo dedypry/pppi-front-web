@@ -45,7 +45,9 @@ export default function PackageSection() {
               </Chip>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            className={`grid grid-cols-1 sm:grid-cols-2 ${pckg.children.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-4"} gap-6`}
+          >
             {pckg.children.map((item, i) => (
               <Card
                 key={i}

@@ -1,5 +1,6 @@
 import { Button, Card, Image } from "@heroui/react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import ListBlogs from "./list-blogs";
 import ListAgenda from "./list-agenda";
@@ -42,8 +43,10 @@ export default function HomePage() {
               Ayo bergabung dan capai lebih banyak bersama
             </p>
             <Button
+              as={Link}
               className="mt-10 text-white"
               radius="full"
+              to="/partner"
               variant="bordered"
             >
               🚀 Mulai Jadi Partner
@@ -105,8 +108,10 @@ export default function HomePage() {
           <div className="md:col-span-4">
             <div className="flex h-full items-center justify-center">
               <Button
+                as={Link}
                 className="text-white shadow-lg"
                 radius="full"
+                to="/partner"
                 variant="bordered"
               >
                 Daftar Kemitraan
