@@ -10,7 +10,7 @@ export function notify(msg: string, type: "success" | "error" = "success") {
 }
 export function notifyError(res: AxiosError) {
   addToast({
-    title: "Error",
+    title: "Peringatan",
     description: (res?.response?.data as any)?.message,
     color: "danger",
   });

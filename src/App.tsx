@@ -14,7 +14,7 @@ import ErrorNotFoundPage from "./pages/errors/not-found";
 import ComingSoon from "./pages/errors/cooming-soon";
 import VisiMisiPage from "./pages/about/visi-misi";
 import "aos/dist/aos.css";
-import PartnerPage from "./pages/partner";
+import FormPage from "./pages/form";
 AOS.init({
   duration: 1000,
 });
@@ -25,6 +25,7 @@ function App() {
         <Route element={<HomePage />} path="/" />
         <Route element={<HistoryPage />} path="/history" />
 
+        <Route element={<FormPage />} path="/form/:slug" />
         <Route path="/blogs">
           <Route element={<BlogsPage />} path="" />
           <Route element={<BlogsDetail />} path=":slug" />
@@ -34,7 +35,7 @@ function App() {
         <Route element={<RegisterPage />} path="/register" />
         <Route element={<VisiMisiPage />} path="/visi-misi" />
 
-        <Route element={<PartnerPage />} path="/partner" />
+        <Route element={<ComingSoon />} path="/partner" />
         {/* Comming soon */}
         <Route element={<ComingSoon />} path="/organization" />
         <Route element={<ComingSoon />} path="/lpk-pppi" />
