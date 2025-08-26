@@ -165,7 +165,7 @@ export default function FormCreatePage() {
 
             return (
               <div key={item.id}>
-                <div className="flex gap-2 items-center mb-3">
+                <div className="flex flex-col md:flex-row gap-2 items-center mb-3">
                   <Controller
                     control={control}
                     name={`form_headers.${i}.title`}
@@ -179,44 +179,46 @@ export default function FormCreatePage() {
                     )}
                   />
 
-                  <Controller
-                    control={control}
-                    name={`form_headers.${i}.type`}
-                    render={({ field }) => (
-                      <CustomSelect
-                        {...field}
-                        className="w-[120px]"
-                        label="Pilih Type"
-                        labelPlacement="inside"
-                        selectedKeys={[field.value]}
-                      >
-                        {types.map((item) => (
-                          <SelectItem key={item}>{item}</SelectItem>
-                        ))}
-                      </CustomSelect>
-                    )}
-                  />
-                  <Controller
-                    control={control}
-                    name={`form_headers.${i}.required`}
-                    render={({ field }) => (
-                      <Checkbox
-                        isSelected={field.value}
-                        onValueChange={(val) => field.onChange(val)}
-                      >
-                        Wajib
-                      </Checkbox>
-                    )}
-                  />
+                  <div className="flex justify-between w-full gap-4 items-center">
+                    <Controller
+                      control={control}
+                      name={`form_headers.${i}.type`}
+                      render={({ field }) => (
+                        <CustomSelect
+                          {...field}
+                          className="md:w-[120px]"
+                          label="Pilih Type"
+                          labelPlacement="inside"
+                          selectedKeys={[field.value]}
+                        >
+                          {types.map((item) => (
+                            <SelectItem key={item}>{item}</SelectItem>
+                          ))}
+                        </CustomSelect>
+                      )}
+                    />
+                    <Controller
+                      control={control}
+                      name={`form_headers.${i}.required`}
+                      render={({ field }) => (
+                        <Checkbox
+                          isSelected={field.value}
+                          onValueChange={(val) => field.onChange(val)}
+                        >
+                          Wajib
+                        </Checkbox>
+                      )}
+                    />
 
-                  <Button
-                    isIconOnly
-                    radius="full"
-                    variant="light"
-                    onPress={() => remove(i)}
-                  >
-                    <Trash2Icon className="text-danger" />
-                  </Button>
+                    <Button
+                      isIconOnly
+                      radius="full"
+                      variant="light"
+                      onPress={() => remove(i)}
+                    >
+                      <Trash2Icon className="text-danger" />
+                    </Button>
+                  </div>
                 </div>
 
                 {["select", "check", "radio"].includes(type) && (
