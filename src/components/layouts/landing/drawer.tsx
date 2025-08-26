@@ -88,6 +88,20 @@ export default function LandingDrawer() {
       href: "/contact",
       icon: ContactIcon,
     },
+    ...(user
+      ? [
+          {
+            title: "Member",
+            children: [
+              {
+                title: "Dashboard",
+                href: "/member",
+                icon: LayoutDashboard,
+              },
+            ],
+          },
+        ]
+      : []),
   ];
 
   return (

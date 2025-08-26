@@ -101,7 +101,7 @@ export default function BlogCreate() {
 
   return (
     <form className="grid grid-cols-12" onSubmit={handleSubmit(onSubmit)}>
-      <div className="col-span-8 space-y-5">
+      <div className="md:col-span-8 col-span-12 space-y-5">
         <Controller
           control={control}
           name="cover"
@@ -180,7 +180,7 @@ export default function BlogCreate() {
           </CardBody>
         </Card>
       </div>
-      <div className="col-span-4 pl-3">
+      <div className="md:col-span-4 col-span-12 md:pl-3 mt-5 md:mt-0">
         <Card className="sticky top-16">
           <CardBody className="flex flex-col gap-4">
             <Controller
