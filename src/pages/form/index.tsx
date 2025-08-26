@@ -11,7 +11,6 @@ import Loading from "@/components/loading/Loading";
 import { IFormList } from "@/interface/IForm";
 import CustomInput from "@/components/form/custom-input";
 import { confirmSweet } from "@/utils/helpers/confirm";
-import "./style.css";
 
 export default function FormPage() {
   const [loading, setLoading] = useState(false);
