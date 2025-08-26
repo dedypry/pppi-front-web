@@ -7,6 +7,8 @@ export interface IPagination<T> {
 }
 
 export interface IQueryPagination {
-  page?: number;
-  pageSize?: number;
+  page?: number | string;
+  pageSize?: number | string;
+  q?: string;
+  status?: string;
 }

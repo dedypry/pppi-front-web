@@ -51,7 +51,7 @@ export default function LoginPage() {
       .then(({ data }) => {
         dispatch(setToken(data.token));
         notify("Login Success");
-        route("/");
+        route("/member");
       })
       .catch((err) => notifyError(err))
       .finally(() => setIsLoading(false));

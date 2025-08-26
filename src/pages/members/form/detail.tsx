@@ -12,8 +12,8 @@ import {
   TableRow,
 } from "@heroui/react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Trash2Icon } from "lucide-react";
+import { Link, useParams } from "react-router-dom";
+import { EditIcon, Trash2Icon } from "lucide-react";
 
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
 import { getFormResultDetail } from "@/stores/features/form/actions";
@@ -57,7 +57,19 @@ export default function FormViewDetail() {
   return (
     <div className="flex flex-col gap-4">
       <Card>
-        <CardHeader as="h4">{result?.title}</CardHeader>
+        <CardHeader className="flex justify-between">
+          <h4>{result?.title}</h4>
+          <div>
+            <Button
+              isIconOnly
+              as={Link}
+              to={`/member/form/${result?.id}`}
+              variant="light"
+            >
+              <EditIcon className="text-warning" />
+            </Button>
+          </div>
+        </CardHeader>
         <CardBody>
           <div dangerouslySetInnerHTML={{ __html: result?.description! }} />
         </CardBody>

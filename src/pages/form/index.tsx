@@ -31,11 +31,14 @@ export default function FormPage() {
 
   function getForm(data: string) {
     http
-      .get(`/form/${data}`)
+      .get(`/form/member/${data}`)
       .then(({ data }) => {
         setForm(data);
       })
-      .catch((err) => notifyError(err));
+      .catch((err) => {
+        notifyError(err);
+        route("/");
+      });
   }
 
   if (!formList) return <Loading />;
@@ -109,6 +112,8 @@ export default function FormPage() {
       })
       .finally(() => setLoading(false));
   }
+
+  console.log("FORM LIST", formList);
 
   return (
     <>

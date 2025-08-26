@@ -106,7 +106,7 @@ export default function FormCreatePage() {
       .then(({ data }) => {
         notify(data.message);
         reset();
-        route("/form");
+        route("/member/form");
       })
       .catch((err) => notifyError(err))
       .finally(() => setLoading(false));

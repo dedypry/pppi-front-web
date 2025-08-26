@@ -2,7 +2,10 @@ import {
   Button,
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
+  Chip,
+  Pagination,
   Table,
   TableBody,
   TableCell,
@@ -11,8 +14,8 @@ import {
   TableRow,
 } from "@heroui/react";
 import { CopyIcon } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { getForm } from "@/stores/features/form/actions";
 import { useAppDispatch, useAppSelector } from "@/stores/hooks";
@@ -28,9 +31,18 @@ export default function FormPageMember() {
   const { forms } = useAppSelector((state) => state.form);
   const dispatch = useAppDispatch();
   const route = useNavigate();
+  const { search } = useLocation();
+
+  const queryParams = new URLSearchParams(search);
+  const [query, setQuery] = useState({
+    q: "",
+    pageSize: "10",
+    page: 1,
+    ...Object.fromEntries(queryParams.entries()),
+  });
 
   useEffect(() => {
-    dispatch(getForm({}));
+    dispatch(getForm(query));
   }, []);
 
   function handleDelete(id: number) {
@@ -38,9 +50,40 @@ export default function FormPageMember() {
       .delete(`/form/${id}`)
       .then(({ data }) => {
         notify(data.message);
-        dispatch(getForm({}));
+        dispatch(getForm(query));
       })
       .catch((err) => notifyError(err));
+  }
+
+  function setQueryParams(key: string, value: any) {
+    setQuery((val) => ({
+      ...val,
+      [key]: value,
+      ...(key === "q" && {
+        page: 1,
+      }),
+    }));
+  }
+
+  function getStatus(status: string) {
+    let color = "";
+
+    switch (status) {
+      case "submission":
+        color = "default";
+        break;
+      case "active":
+        color = "primary";
+        break;
+      case "reject":
+        color = "danger";
+        break;
+
+      default:
+        break;
+    }
+
+    return color;
   }
 
   return (
@@ -54,11 +97,12 @@ export default function FormPageMember() {
         </div>
       </CardHeader>
       <CardBody>
-        <Table>
+        <Table removeWrapper>
           <TableHeader>
             <TableColumn>Title</TableColumn>
             <TableColumn>slug</TableColumn>
             <TableColumn>dibuat</TableColumn>
+            <TableColumn>status</TableColumn>
             <TableColumn>Total Respon</TableColumn>
             <TableColumn className="text-right">aksi</TableColumn>
           </TableHeader>
@@ -67,11 +111,16 @@ export default function FormPageMember() {
               <TableRow
                 key={item.id}
                 className="hover:bg-primary-50 cursor-pointer"
-                onClick={() => route(`/form/${item.id}/view`)}
+                onClick={() => route(`/member/form/${item.id}/view`)}
               >
                 <TableCell>{item.title}</TableCell>
                 <TableCell>{item.slug}</TableCell>
                 <TableCell>{dateFormat(item.created_at)}</TableCell>
+                <TableCell>
+                  <Chip color={getStatus(item.status) as any} variant="dot">
+                    {item.status}
+                  </Chip>
+                </TableCell>
                 <TableCell>{item.result_total}</TableCell>
                 <TableCell className="flex items-center justify-end">
                   <div>
@@ -87,8 +136,8 @@ export default function FormPageMember() {
                   </div>
                   <TableAction
                     onDelete={() => handleDelete(item.id)}
-                    onEdit={() => route(`/form/${item.id}`)}
-                    onView={() => route(`/form/${item.id}/view`)}
+                    onEdit={() => route(`/member/form/${item.id}`)}
+                    onView={() => route(`/member/form/${item.id}/view`)}
                   />
                 </TableCell>
               </TableRow>
@@ -96,6 +145,24 @@ export default function FormPageMember() {
           </TableBody>
         </Table>
       </CardBody>
+      {forms?.data?.length! > 0 && (
+        <CardFooter className="flex justify-between">
+          <div>
+            <p className="font-bold text-gray-600">
+              Total : {forms?.total || 0} Data
+            </p>
+          </div>
+          <Pagination
+            isCompact
+            showControls
+            initialPage={forms?.current_page}
+            radius="full"
+            total={forms?.last_page!}
+            onChange={(page) => setQueryParams("page", page)}
+          />
+          <div />
+        </CardFooter>
+      )}
     </Card>
   );
 }

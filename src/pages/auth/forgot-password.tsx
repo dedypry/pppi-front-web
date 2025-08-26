@@ -9,20 +9,16 @@ import {
 import { MailIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 
 import CustomInput from "@/components/form/custom-input";
 import { apps } from "@/config/app";
 import { http } from "@/config/axios";
-import { useAppDispatch } from "@/stores/hooks";
 import { notify, notifyError } from "@/utils/helpers/notify";
 type FormValues = {
   email: string;
 };
 export default function ForgotPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useAppDispatch();
-  const route = useNavigate();
 
   const {
     control,
