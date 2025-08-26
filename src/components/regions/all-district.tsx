@@ -10,6 +10,7 @@ interface Props {
   isRequired?: boolean;
   isInvalid?: boolean;
   errorMessage?: string;
+  description?: string;
   label?: string;
   placeholder?: string;
   labelPlacement?:
@@ -28,6 +29,7 @@ export default function AllDistrictList({
   labelPlacement = "outside",
   label,
   placeholder,
+  description,
 }: Props) {
   const [inputValue, setInputValue] = useState("");
   const [list, seList] = useState([]);
@@ -58,6 +60,7 @@ export default function AllDistrictList({
   return (
     <Autocomplete
       defaultItems={list}
+      description={<p className="text-gray-500 italic">{description}</p>}
       errorMessage={errorMessage}
       inputValue={inputValue}
       isInvalid={isInvalid}

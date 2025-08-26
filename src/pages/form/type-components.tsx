@@ -73,6 +73,7 @@ export default function TypeComponents({
             isInvalid: !!error,
             errorMessage: error,
           })}
+          description="Ketikan Kelurahan, Kota atau Provinsi"
           label={data.title}
           placeholder={`Masukan ${data.title}`}
         />
