@@ -38,3 +38,4 @@ export async function copyClipboard(text: any) {
     notify("Gagal copy");
   }
 }
+

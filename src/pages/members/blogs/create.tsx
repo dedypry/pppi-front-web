@@ -93,7 +93,7 @@ export default function BlogCreate() {
       .then(({ data }) => {
         reset();
         notify(data.message);
-        route("/blogs");
+        route("/member/blogs");
       })
       .catch((err) => notifyError(err))
       .finally(() => setLoading(false));

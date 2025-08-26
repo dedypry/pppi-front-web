@@ -25,6 +25,7 @@ import BlogCategoryPage from "./pages/members/blog-category";
 import FormCreatePage from "./pages/members/form/create";
 import FormViewDetail from "./pages/members/form/detail";
 import FormPageMember from "./pages/members/form";
+import ProfilePage from "./pages/members/my-profile";
 AOS.init({
   duration: 1000,
 });
@@ -55,6 +56,7 @@ function App() {
 
       <Route element={<AdminLayout />} path="/member">
         <Route element={<MemberDashboardPage />} path="" />
+        <Route element={<ProfilePage />} path="profile" />
 
         <Route path="form">
           <Route element={<FormPageMember />} path="" />

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -7,10 +6,10 @@ import { IQueryPagination } from "@/interface/IPagination";
 
 export const getBlogs = createAsyncThunk(
   "get-blogs",
-  async ({ page = 1, pageSize = 10 }: IQueryPagination) => {
+  async ({ page = 1, pageSize = 10, user }: IQueryPagination) => {
     try {
       const { data } = await http.get(
-        `/blogs?page=${page}&pageSize=${pageSize}`,
+        `/blogs?page=${page}&pageSize=${pageSize}&user=${user}`,
       );
 
       return data;

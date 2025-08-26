@@ -23,8 +23,6 @@ import {
   BookPlusIcon,
   SearchIcon,
   EllipsisVerticalIcon,
-  LogOutIcon,
-  BookCheck,
   EditIcon,
   Trash2Icon,
 } from "lucide-react";
@@ -43,6 +41,7 @@ import { http } from "@/config/axios";
 import { notify, notifyError } from "@/utils/helpers/notify";
 
 export default function BlogPage() {
+  const { user } = useAppSelector((state) => state.user);
   const { blogs } = useAppSelector((state) => state.blogs);
   const [data, setData] = useState<IBlog>();
   const [isOpen, setOpen] = useState(false);
@@ -51,18 +50,17 @@ export default function BlogPage() {
   const route = useNavigate();
 
   useEffect(() => {
-    dispatch(getBlogs({}));
-  }, []);
+    if (user) {
+      dispatch(getBlogs({ user: user?.id }));
+    }
+  }, [user]);
 
-  function handleUpdateStatus(
-    id: number,
-    status: "publish" | "draft" | "rejected" | "submission",
-  ) {
+  function handleDelete(slug: string) {
     http
-      .patch(`/blogs/status/${id}`, { status })
+      .delete(`/blogs/${slug}`)
       .then(({ data }) => {
         notify(data.message);
-        dispatch(getBlogs({}));
+        dispatch(getBlogs({ user: user?.id }));
       })
       .catch((err) => notifyError(err));
   }
@@ -78,7 +76,7 @@ export default function BlogPage() {
               color="primary"
               size="sm"
               startContent={<BookPlusIcon size={18} />}
-              onPress={() => route("/blogs/create")}
+              onPress={() => route("/member/blogs/create")}
             >
               Buat Blog
             </Button>
@@ -151,33 +149,12 @@ export default function BlogPage() {
                       </DropdownTrigger>
                       <DropdownMenu>
                         <DropdownItem
-                          key="reject"
-                          color="danger"
-                          startContent={<LogOutIcon size={18} />}
-                          onPress={() =>
-                            confirmSweet(
-                              () => handleUpdateStatus(item.id, "rejected"),
-                              {
-                                confirmButtonText: "Ya, Reject",
-                              },
-                            )
-                          }
-                        >
-                          Tolak
-                        </DropdownItem>
-                        <DropdownItem
-                          key="publish"
-                          color="success"
-                          startContent={<BookCheck size={18} />}
-                          onPress={() => handleUpdateStatus(item.id, "publish")}
-                        >
-                          Terbitkan
-                        </DropdownItem>
-                        <DropdownItem
                           key="edit"
                           color="warning"
                           startContent={<EditIcon size={18} />}
-                          onClick={() => route(`/blogs/${item.slug}/edit`)}
+                          onClick={() =>
+                            route(`/member/blogs/${item.slug}/edit`)
+                          }
                         >
                           Edit
                         </DropdownItem>
@@ -185,7 +162,9 @@ export default function BlogPage() {
                           key="delete"
                           color="danger"
                           startContent={<Trash2Icon size={18} />}
-                          onPress={() => confirmSweet(() => {})}
+                          onPress={() =>
+                            confirmSweet(() => handleDelete(item.slug))
+                          }
                         >
                           Hapus
                         </DropdownItem>

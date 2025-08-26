@@ -102,6 +102,7 @@ export default defineConfig([
       "jsx-a11y/interactive-supports-focus": "warn",
       "prettier/prettier": "warn",
       "no-unused-vars": "off",
+      "no-console": "off",
       "unused-imports/no-unused-vars": "off",
       "unused-imports/no-unused-imports": "warn",
 

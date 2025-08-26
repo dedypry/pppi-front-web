@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { galery } from "@/config/axios";
 
 export async function uploadFile(file: File, folder: string = "general") {
