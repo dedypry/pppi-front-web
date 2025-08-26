@@ -15,6 +15,9 @@ import ComingSoon from "./pages/errors/cooming-soon";
 import VisiMisiPage from "./pages/about/visi-misi";
 import "aos/dist/aos.css";
 import FormPage from "./pages/form";
+import ForgotPasswordPage from "./pages/auth/forgot-password";
+import ResetPasswordPage from "./pages/auth/reset-password";
+import MemberDashboardPage from "./pages/members/dashboard";
 AOS.init({
   duration: 1000,
 });
@@ -29,6 +32,9 @@ function App() {
         <Route path="/blogs">
           <Route element={<BlogsPage />} path="" />
           <Route element={<BlogsDetail />} path=":slug" />
+        </Route>
+        <Route path="/member">
+          <Route element={<MemberDashboardPage />} path="" />
         </Route>
 
         <Route element={<ContactPage />} path="/contact" />
@@ -45,6 +51,8 @@ function App() {
 
       <Route element={<AuthLayout />} path="/">
         <Route element={<LoginPage />} path="/login" />
+        <Route element={<ForgotPasswordPage />} path="/forgot-password" />
+        <Route element={<ResetPasswordPage />} path="/reset-password/:token" />
       </Route>
 
       <Route
