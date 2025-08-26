@@ -10,6 +10,8 @@ interface Props {
   isRequired?: boolean;
   isInvalid?: boolean;
   errorMessage?: string;
+  label?: string;
+  placeholder?: string;
   labelPlacement?:
     | "outside"
     | "outside-left"
@@ -24,6 +26,8 @@ export default function AllDistrictList({
   isInvalid,
   errorMessage,
   labelPlacement = "outside",
+  label,
+  placeholder,
 }: Props) {
   const [inputValue, setInputValue] = useState("");
   const [list, seList] = useState([]);
@@ -58,9 +62,9 @@ export default function AllDistrictList({
       inputValue={inputValue}
       isInvalid={isInvalid}
       isRequired={isRequired}
-      label="Regional"
+      label={label || "Regional"}
       labelPlacement={labelPlacement}
-      placeholder="Pilih Regional"
+      placeholder={placeholder || "Pilih Regional"}
       selectedKey={value}
       variant="bordered"
       onInputChange={setInputValue}

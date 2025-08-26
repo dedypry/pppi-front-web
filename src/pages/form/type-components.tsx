@@ -73,6 +73,8 @@ export default function TypeComponents({
             isInvalid: !!error,
             errorMessage: error,
           })}
+          label={data.title}
+          placeholder={`Masukan ${data.title}`}
         />
       );
       break;
