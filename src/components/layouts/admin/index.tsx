@@ -17,7 +17,7 @@ export default function AdminLayout({ children }: Props) {
   const isMobile = useMediaQuery(responsive.mobile);
 
   useEffect(() => {
-    setIsOpen(!isMobile);
+    setIsOpen(false);
   }, [isMobile]);
 
   return (
