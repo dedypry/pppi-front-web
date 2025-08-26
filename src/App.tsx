@@ -18,6 +18,13 @@ import FormPage from "./pages/form";
 import ForgotPasswordPage from "./pages/auth/forgot-password";
 import ResetPasswordPage from "./pages/auth/reset-password";
 import MemberDashboardPage from "./pages/members/dashboard";
+import AdminLayout from "./components/layouts/admin";
+import BlogPage from "./pages/members/blogs";
+import BlogCreate from "./pages/members/blogs/create";
+import BlogCategoryPage from "./pages/members/blog-category";
+import FormCreatePage from "./pages/members/form/create";
+import FormViewDetail from "./pages/members/form/detail";
+import FormPageMember from "./pages/members/form";
 AOS.init({
   duration: 1000,
 });
@@ -33,9 +40,6 @@ function App() {
           <Route element={<BlogsPage />} path="" />
           <Route element={<BlogsDetail />} path=":slug" />
         </Route>
-        <Route path="/member">
-          <Route element={<MemberDashboardPage />} path="" />
-        </Route>
 
         <Route element={<ContactPage />} path="/contact" />
         <Route element={<RegisterPage />} path="/register" />
@@ -47,6 +51,24 @@ function App() {
         <Route element={<ComingSoon />} path="/lpk-pppi" />
         <Route element={<ComingSoon />} path="/gallery" />
         <Route element={<ComingSoon />} path="/event/:slug" />
+      </Route>
+
+      <Route element={<AdminLayout />} path="/member">
+        <Route element={<MemberDashboardPage />} path="" />
+
+        <Route path="form">
+          <Route element={<FormPageMember />} path="" />
+          <Route element={<FormCreatePage />} path="create" />
+          <Route element={<FormCreatePage />} path=":id" />
+          <Route element={<FormViewDetail />} path=":id/view" />
+        </Route>
+
+        <Route path="blogs">
+          <Route element={<BlogPage />} path="" />
+          <Route element={<BlogCreate />} path="create" />
+          <Route element={<BlogCreate />} path=":slug/edit" />
+          <Route element={<BlogCategoryPage />} path="category" />
+        </Route>
       </Route>
 
       <Route element={<AuthLayout />} path="/">

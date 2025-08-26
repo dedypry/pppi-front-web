@@ -18,6 +18,7 @@ import blogs from "./features/blogs/blogSlice";
 import banners from "./features/banners/bannerSlice";
 import schedulers from "./features/schedulers/scheduleSlice";
 import packages from "./features/packages/packageSlice";
+import form from "./features/form/formSlice";
 
 const persistedAuth = persistReducer({ key: "auth", storage }, auth);
 
@@ -30,6 +31,7 @@ export const store = configureStore({
     banners,
     schedulers,
     packages,
+    form,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
