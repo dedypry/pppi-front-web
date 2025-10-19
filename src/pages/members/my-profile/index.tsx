@@ -104,7 +104,7 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 pb-2 md:flex-row items-center justify-between md:pl-40 pt-2">
+          <div className="flex flex-col gap-2 pb-2  md:flex-row md:items-center md:justify-between md:pl-40 pt-7 md:pt-2">
             <div className="flex flex-col gap-3">
               <p className="text-[20px] font-semibold">{user?.name}</p>
               <div className="flex flex-col pb-2 md:flex-row  gap-2 text-gray-500">
