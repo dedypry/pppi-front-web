@@ -73,7 +73,7 @@ export default function ProfilePage() {
     <div className="flex flex-col gap-4">
       <Card>
         <div className="z-0 h-[300px] w-full bg-gradient-to-br from-primary to-cyan-400" />
-        <div className="relative h-[100px] w-full px-5">
+        <div className="relative min-h-[100px] w-full px-5">
           <div className="absolute -top-1/2 z-10">
             <div className="group relative cursor-pointer">
               <input
@@ -104,10 +104,10 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between pl-40 pt-2">
+          <div className="flex flex-col gap-2 pb-2 md:flex-row items-center justify-between md:pl-40 pt-2">
             <div className="flex flex-col gap-3">
               <p className="text-[20px] font-semibold">{user?.name}</p>
-              <div className="flex gap-2 text-gray-500">
+              <div className="flex flex-col pb-2 md:flex-row  gap-2 text-gray-500">
                 <div className="flex gap-2">
                   <Building2 size={20} />{" "}
                   <p className="text-sm">

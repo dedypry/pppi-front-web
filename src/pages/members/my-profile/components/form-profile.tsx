@@ -168,15 +168,10 @@ export default function FormProfile({ user }: Props) {
             render={({ field }) => (
               <CustomInput
                 {...field}
-                isRequired
-                description="Gelar Depan akan tampil di Kartu anggota"
-                errorMessage="Gelar Depan tidak boleh kosong"
-                isInvalid={!!errors.front_title}
                 label="Gelar Depan"
                 placeholder="Ex: Dr, Br, Sr"
               />
             )}
-            rules={{ required: true }}
           />
           <Controller
             control={control}
@@ -184,15 +179,10 @@ export default function FormProfile({ user }: Props) {
             render={({ field }) => (
               <CustomInput
                 {...field}
-                isRequired
-                description="Gelar Belakang akan tampil di Kartu anggota"
-                errorMessage="Gelar Belakang tidak boleh kosong"
-                isInvalid={!!errors.back_title}
                 label="Gelar Belakang"
                 placeholder="contoh S.Kep, Ners ..."
               />
             )}
-            rules={{ required: true }}
           />
           <Controller
             control={control}
