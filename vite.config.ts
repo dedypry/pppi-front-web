@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), tailwindcss()],
   build: {
+    outDir: "dpn-pppi.org",
     rollupOptions: {
       external: [],
     },
