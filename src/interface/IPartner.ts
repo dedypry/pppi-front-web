@@ -9,3 +9,13 @@ export interface IPackage {
   description: string | null;
   children: IPackage[];
 }
+
+export interface IPartner {
+  id: number;
+  name: string;
+  logo: string | null;
+  website: string | null;
+  description: string | null;
+  created_at: string;
+  updated_at: string;
+}

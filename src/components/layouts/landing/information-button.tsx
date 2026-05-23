@@ -42,6 +42,13 @@ export default function InformationButton({ scrolled }: Props) {
           >
             Gallery
           </DropdownItem>
+          <DropdownItem
+            key={"shop"}
+            color="primary"
+            onClick={() => route("/shop")}
+          >
+            E-Commerce
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </div>

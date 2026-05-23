@@ -1,7 +1,27 @@
-import { Card, CardBody, CardHeader, Chip, Divider } from "@heroui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Chip,
+  Divider,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+} from "@heroui/react";
 import { CheckCircle } from "lucide-react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "@/stores/hooks";
+import { IPackage } from "@/interface/IPartner";
+import CustomInput from "@/components/form/custom-input";
+import CustomTextArea from "@/components/form/custom-textarea";
+import { http } from "@/config/axios";
+import { notify, notifyError } from "@/utils/helpers/notify";
 
 const colors = [
   "from-pink-400 to-red-400",
@@ -19,9 +39,215 @@ const borderColors = [
 
 export default function PackageSection() {
   const { packages } = useAppSelector((state) => state.packages);
+  const { token } = useAppSelector((state) => state.auth);
+  const route = useNavigate();
+  const [isOpen, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<{
+    id: number;
+    parentTitle: string;
+    packageTitle: string;
+  } | null>(null);
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<{
+    name: string;
+    email: string;
+    phone: string;
+    institution: string;
+    note: string;
+  }>({
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      institution: "",
+      note: "",
+    },
+  });
+
+  function closeModal() {
+    setOpen(false);
+    setSelectedPackage(null);
+    reset();
+  }
+
+  function handleSelectPackage(parentTitle: string, item: IPackage) {
+    if (token) {
+      const subject = encodeURIComponent(`Minat Paket ${item.title}`);
+      const content = encodeURIComponent(
+        `Saya tertarik dengan paket ${item.title} (${parentTitle}).`,
+      );
+
+      route(`/contact?subject=${subject}&content=${content}`);
+
+      return;
+    }
+
+    setSelectedPackage({
+      id: item.id,
+      parentTitle,
+      packageTitle: item.title,
+    });
+    setOpen(true);
+  }
+
+  const onSubmit: SubmitHandler<{
+    name: string;
+    email: string;
+    phone: string;
+    institution: string;
+    note: string;
+  }> = (data) => {
+    if (!selectedPackage) {
+      notify("Paket belum dipilih", "error");
+
+      return;
+    }
+
+    setIsLoading(true);
+
+    http
+      .post("/package-interests", {
+        package_id: selectedPackage.id,
+        package_group: selectedPackage.parentTitle,
+        package_title: selectedPackage.packageTitle,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        institution: data.institution || "",
+        note: data.note || "",
+      })
+      .then(({ data }) => {
+        notify(data.message);
+        closeModal();
+      })
+      .catch((err) => notifyError(err))
+      .finally(() => setIsLoading(false));
+  };
 
   return (
     <section className="bg-gray-50 py-16" id="package">
+      <Modal
+        isDismissable={!isLoading}
+        isOpen={isOpen}
+        onOpenChange={() => {
+          if (!isLoading) {
+            closeModal();
+          }
+        }}
+      >
+        <ModalContent>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <ModalHeader>Isi Identitas Diri</ModalHeader>
+            <ModalBody className="flex flex-col gap-3">
+              <p className="text-sm text-gray-500">
+                Anda belum login. Isi identitas berikut agar tim kami dapat
+                menghubungi Anda terkait paket{" "}
+                <span className="font-semibold">
+                  {selectedPackage?.packageTitle || "-"}
+                </span>
+                .
+              </p>
+              <Controller
+                control={control}
+                name="name"
+                render={({ field }) => (
+                  <CustomInput
+                    {...field}
+                    errorMessage={errors.name?.message || "Nama wajib diisi"}
+                    isInvalid={!!errors.name}
+                    label="Nama Lengkap"
+                    placeholder="Masukan nama lengkap"
+                  />
+                )}
+                rules={{ required: true }}
+              />
+              <Controller
+                control={control}
+                name="email"
+                render={({ field }) => (
+                  <CustomInput
+                    {...field}
+                    errorMessage={
+                      errors.email?.message || "Email wajib diisi dengan benar"
+                    }
+                    isInvalid={!!errors.email}
+                    label="Email"
+                    placeholder="Masukan email aktif"
+                    type="email"
+                  />
+                )}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Format email tidak valid",
+                  },
+                }}
+              />
+              <Controller
+                control={control}
+                name="phone"
+                render={({ field }) => (
+                  <CustomInput
+                    {...field}
+                    errorMessage={
+                      errors.phone?.message || "No. telepon/WhatsApp wajib diisi"
+                    }
+                    isInvalid={!!errors.phone}
+                    label="No. Telepon / WhatsApp"
+                    placeholder="Masukan no. telepon"
+                  />
+                )}
+                rules={{ required: true }}
+              />
+              <Controller
+                control={control}
+                name="institution"
+                render={({ field }) => (
+                  <CustomInput
+                    {...field}
+                    errorMessage={errors.institution?.message}
+                    isInvalid={!!errors.institution}
+                    label="Instansi / Asal"
+                    placeholder="Masukan instansi (opsional)"
+                  />
+                )}
+              />
+              <Controller
+                control={control}
+                name="note"
+                render={({ field }) => (
+                  <CustomTextArea
+                    {...field}
+                    errorMessage={errors.note?.message}
+                    isInvalid={!!errors.note}
+                    label="Catatan"
+                    minRows={3}
+                    placeholder="Contoh: ingin dihubungi jam kerja (opsional)"
+                  />
+                )}
+              />
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                isDisabled={isLoading}
+                variant="light"
+                onPress={closeModal}
+              >
+                Batal
+              </Button>
+              <Button color="primary" isLoading={isLoading} type="submit">
+                Kirim Minat Paket
+              </Button>
+            </ModalFooter>
+          </form>
+        </ModalContent>
+      </Modal>
       {packages.map((pckg) => (
         <div key={pckg.id} className="container mx-auto px-5 md:px-10 mb-20">
           <h2
@@ -48,12 +274,14 @@ export default function PackageSection() {
           >
             {pckg.children.map((item, i) => (
               <Card
-                key={i}
+                key={item.id}
                 className={`w-full text-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer `}
                 data-aos="fade-down"
+                isPressable
                 style={{
                   backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))`,
                 }}
+                onPress={() => handleSelectPackage(pckg.title, item)}
               >
                 <div
                   className={`bg-gradient-to-br h-full ${colors[i % colors.length]} p-5`}

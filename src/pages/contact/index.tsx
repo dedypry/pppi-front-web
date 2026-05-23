@@ -1,7 +1,8 @@
 import { Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
 import { Building2, MailCheckIcon, PhoneCall } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import ListSidebar from "./list-sidebar";
 
@@ -20,10 +21,12 @@ interface IForm {
 }
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
+  const [searchParams] = useSearchParams();
   const {
     control,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -33,6 +36,19 @@ export default function ContactPage() {
       content: "",
     },
   });
+
+  useEffect(() => {
+    const subject = searchParams.get("subject");
+    const content = searchParams.get("content");
+
+    if (subject) {
+      setValue("subject", subject);
+    }
+
+    if (content) {
+      setValue("content", content);
+    }
+  }, [searchParams, setValue]);
 
   function onSubmit(data: IForm) {
     setLoading(true);

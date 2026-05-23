@@ -18,6 +18,7 @@ import FormPage from "./pages/form";
 import ForgotPasswordPage from "./pages/auth/forgot-password";
 import ResetPasswordPage from "./pages/auth/reset-password";
 import MemberDashboardPage from "./pages/members/dashboard";
+import PartnerPage from "./pages/partner";
 import AdminLayout from "./components/layouts/admin";
 import BlogPage from "./pages/members/blogs";
 import BlogCreate from "./pages/members/blogs/create";
@@ -26,6 +27,10 @@ import FormCreatePage from "./pages/members/form/create";
 import FormViewDetail from "./pages/members/form/detail";
 import FormPageMember from "./pages/members/form";
 import ProfilePage from "./pages/members/my-profile";
+import ShopPage from "./pages/shop";
+import ShopDetailPage from "./pages/shop/detail";
+import ShopCheckoutPage from "./pages/shop/checkout";
+import ShopOrderHistoryPage from "./pages/shop/orders";
 AOS.init({
   duration: 1000,
 });
@@ -45,8 +50,12 @@ function App() {
         <Route element={<ContactPage />} path="/contact" />
         <Route element={<RegisterPage />} path="/register" />
         <Route element={<VisiMisiPage />} path="/visi-misi" />
+        <Route element={<ShopPage />} path="/shop" />
+        <Route element={<ShopDetailPage />} path="/shop/:id" />
+        <Route element={<ShopCheckoutPage />} path="/shop/checkout" />
+        <Route element={<ShopOrderHistoryPage />} path="/shop/orders" />
 
-        <Route element={<ComingSoon />} path="/partner" />
+        <Route element={<PartnerPage />} path="/partner" />
         {/* Comming soon */}
         <Route element={<ComingSoon />} path="/organization" />
         <Route element={<ComingSoon />} path="/lpk-pppi" />

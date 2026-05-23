@@ -13,6 +13,7 @@ import {
   Atom,
   Backpack,
   ContactIcon,
+  ShoppingBag,
   GalleryThumbnails,
   History,
   LayoutDashboard,
@@ -87,6 +88,11 @@ export default function LandingDrawer() {
       title: "Kontak",
       href: "/contact",
       icon: ContactIcon,
+    },
+    {
+      title: "E-Commerce",
+      href: "/shop",
+      icon: ShoppingBag,
     },
     ...(user
       ? [

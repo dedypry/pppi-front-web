@@ -117,6 +117,14 @@ export default function DefaultLayout({ children }: Props) {
             <NavbarItem>
               <Link
                 className={`link-anim ${scrolled ? "text-gray-600" : "text-white"}`}
+                to="/shop"
+              >
+                E-Commerce
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link
+                className={`link-anim ${scrolled ? "text-gray-600" : "text-white"}`}
                 to="/contact"
               >
                 Kontak
