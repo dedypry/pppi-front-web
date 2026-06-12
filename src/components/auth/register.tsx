@@ -7,7 +7,6 @@ import {
   Divider,
   Radio,
   RadioGroup,
-  SelectItem,
 } from "@heroui/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import dayjs from "dayjs";
@@ -19,7 +18,6 @@ import CustomAutoComplete from "../form/custom-auto-complete";
 import CustomInput from "@/components/form/custom-input";
 import { ICreateMember, IUser } from "@/interface/IUser";
 import CityList from "@/components/regions/city";
-import CustomSelect from "@/components/form/custom-select";
 import DistrictList from "@/components/regions/district";
 import ProvinceList from "@/components/regions/province";
 import Man from "@/assets/images/man.png";
