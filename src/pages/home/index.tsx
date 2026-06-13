@@ -77,7 +77,7 @@ export default function HomePage() {
           <section className="mx-1 mb-10" id="title">
             <p className="text-header">Berita Terbaru</p>
             <p className="text-sub">
-              Berita Terbaru Perkumpulan Perawat Pembaharuan Indonesia asdfasdf
+              Berita Terbaru Perkumpulan Perawat Pembaharuan Indonesia 
             </p>
           </section>
           <ListBlogs />
