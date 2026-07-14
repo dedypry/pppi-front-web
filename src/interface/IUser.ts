@@ -77,6 +77,11 @@ export interface IUser {
   profile: IUserProfile;
   created_at: string;
   bio: string;
+  roles?: any[];
+  is_need_verify?: boolean;
+  is_verified?: boolean;
+  verification_status?: string | null;
+  verification_note?: string | null;
 }
 
 export interface ICreateMember {

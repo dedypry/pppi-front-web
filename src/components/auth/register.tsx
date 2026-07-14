@@ -34,6 +34,7 @@ interface Props {
   action: ReactNode;
   isAdmin?: boolean;
   user?: IUser;
+  customSubmit?: (data: ICreateMember) => Promise<void>;
 }
 
 export default function RegisterMember({
@@ -41,6 +42,7 @@ export default function RegisterMember({
   action,
   isAdmin = true,
   user,
+  customSubmit,
 }: Props) {
   const {
     control,
@@ -155,20 +157,27 @@ export default function RegisterMember({
   const onSubmitData: SubmitHandler<ICreateMember> = async (
     data: ICreateMember,
   ) => {
-    http({
-      url: "/members",
-      method: "POST",
-      data: {
-        ...data,
-        date_birth: dayjs(data.date_birth).add(1, "d").toDate(),
-        is_member_payment: data.is_member_payment === "yes",
-      },
-    })
-      .then(() => {
-        reset();
+    try {
+      if (customSubmit) {
+        await customSubmit(data);
         onSuccess(data);
-      })
-      .catch((err) => notifyError(err));
+        return;
+      }
+
+      await http({
+        url: "/members",
+        method: "POST",
+        data: {
+          ...data,
+          date_birth: dayjs(data.date_birth).add(1, "d").toDate(),
+          is_member_payment: data.is_member_payment === "yes",
+        },
+      });
+      reset();
+      onSuccess(data);
+    } catch (err) {
+      notifyError(err as any);
+    }
   };
 
   return (

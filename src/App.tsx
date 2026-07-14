@@ -17,6 +17,7 @@ import "aos/dist/aos.css";
 import FormPage from "./pages/form";
 import ForgotPasswordPage from "./pages/auth/forgot-password";
 import ResetPasswordPage from "./pages/auth/reset-password";
+import VerifyEmailPage from "./pages/auth/verify";
 import MemberDashboardPage from "./pages/members/dashboard";
 import PartnerPage from "./pages/partner";
 import AdminLayout from "./components/layouts/admin";
@@ -49,6 +50,7 @@ function App() {
 
         <Route element={<ContactPage />} path="/contact" />
         <Route element={<RegisterPage />} path="/register" />
+        <Route element={<VerifyEmailPage />} path="/verify" />
         <Route element={<VisiMisiPage />} path="/visi-misi" />
         <Route element={<ShopPage />} path="/shop" />
         <Route element={<ShopDetailPage />} path="/shop/:id" />
