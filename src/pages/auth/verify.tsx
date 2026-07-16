@@ -48,7 +48,7 @@ export default function VerifyEmailPage() {
       const { data: res } = await http.post("/users/verify-email", {
         ...data,
         token,
-        date_birth: dayjs(data.date_birth).add(1, "d").toDate(),
+        date_birth: dayjs(data.date_birth).toDate(),
         is_member_payment: data.is_member_payment === "yes",
       });
 

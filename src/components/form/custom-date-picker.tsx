@@ -26,11 +26,20 @@ function CustomDatePicker(
   ref: React.Ref<HTMLInputElement>,
 ) {
   const [open, setOpen] = useState(false);
+  const selectedDate =
+    props.value && dayjs(props.value as string).isValid()
+      ? dayjs(props.value as string).toDate()
+      : new Date();
+  const displayValue =
+    props.value && dayjs(props.value as string).isValid()
+      ? dayjs(props.value as string).format("DD MMMM YYYY")
+      : props.value;
 
   return (
     <CustomInput
       ref={ref}
       {...props}
+      value={displayValue as any}
       endContent={
         <Popover
           isOpen={open}
@@ -44,11 +53,11 @@ function CustomDatePicker(
             <div className="px-1 py-2">
               <Calendar
                 color="#15980d"
-                date={dayjs(props.value || new Date()).toDate()}
+                date={selectedDate}
                 locale={id}
                 maxDate={maxDate}
                 minDate={minDate}
-                onChange={(e) => onChageValue(dayjs(e).format("DD MMMM YYYY"))}
+                onChange={(e) => onChageValue(dayjs(e).format("YYYY-MM-DD"))}
               />
             </div>
           </PopoverContent>
