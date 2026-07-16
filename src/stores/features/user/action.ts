@@ -7,13 +7,10 @@ import { AppDispatch } from "@/stores";
 
 export const getUser = createAsyncThunk("user/get-user", async () => {
   try {
-    console.log("GET USER");
     const { data } = await http.get("/members");
 
     return data;
   } catch (error) {
-    console.log("GET USER", error);
-
     return {};
   }
 });

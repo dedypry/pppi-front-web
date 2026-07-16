@@ -17,7 +17,6 @@ export function chipColor(status: string) {
 }
 
 export async function copyClipboard(text: any) {
-  console.log("TEXT", text);
   if (!navigator.clipboard) {
     // fallback lama
     const textarea = document.createElement("textarea");

@@ -16,8 +16,6 @@ export default function AdminLayout({ children }: Props) {
 
   const isMobile = useMediaQuery("(max-width: 1023px)");
 
-  console.log(isMobile);
-
   useEffect(() => {
     setIsOpen(false);
   }, [isMobile]);

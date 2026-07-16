@@ -14,8 +14,6 @@ export const getBlogs = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log("BLOG", error);
-
       return null;
     }
   },
@@ -28,8 +26,6 @@ export const getBlogDetail = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log("BLOG", error);
-
       return null;
     }
   },

@@ -113,8 +113,6 @@ export default function FormPage() {
       .finally(() => setLoading(false));
   }
 
-  console.log("FORM LIST", formList);
-
   return (
     <>
       <HeaderContent subtitle="Isi Form Dibawah ini" title={formList.title} />

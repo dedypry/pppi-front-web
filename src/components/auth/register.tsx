@@ -35,6 +35,7 @@ interface Props {
   isAdmin?: boolean;
   user?: IUser;
   customSubmit?: (data: ICreateMember) => Promise<void>;
+  forceMemberPayment?: boolean;
 }
 
 export default function RegisterMember({
@@ -43,6 +44,7 @@ export default function RegisterMember({
   isAdmin = true,
   user,
   customSubmit,
+  forceMemberPayment = false,
 }: Props) {
   const {
     control,
@@ -117,13 +119,17 @@ export default function RegisterMember({
       setValue("contribution", user?.profile.contribution);
       setValue(
         "is_member_payment",
-        user?.profile.is_member_payment ? "yes" : "no",
+        forceMemberPayment
+          ? "yes"
+          : user?.profile.is_member_payment
+            ? "yes"
+            : "no",
       );
       setValue("reason_reject", user?.profile.reason_reject);
       setValue("photo", user?.profile.photo);
       setValue("member_payment_file", user?.profile.member_payment_file);
     }
-  }, [user]);
+  }, [user, forceMemberPayment]);
 
   useEffect(() => {
     const email = watch("email");
@@ -158,9 +164,14 @@ export default function RegisterMember({
     data: ICreateMember,
   ) => {
     try {
+      const payload = forceMemberPayment
+        ? { ...data, is_member_payment: "yes" }
+        : data;
+
       if (customSubmit) {
-        await customSubmit(data);
-        onSuccess(data);
+        await customSubmit(payload);
+        onSuccess(payload);
+
         return;
       }
 
@@ -168,13 +179,13 @@ export default function RegisterMember({
         url: "/members",
         method: "POST",
         data: {
-          ...data,
-          date_birth: dayjs(data.date_birth).add(1, "d").toDate(),
-          is_member_payment: data.is_member_payment === "yes",
+          ...payload,
+          date_birth: dayjs(payload.date_birth).add(1, "d").toDate(),
+          is_member_payment: payload.is_member_payment === "yes",
         },
       });
       reset();
-      onSuccess(data);
+      onSuccess(payload);
     } catch (err) {
       notifyError(err as any);
     }
@@ -665,14 +676,22 @@ export default function RegisterMember({
                     isInvalid={!!errors.is_member_payment}
                     label="Kontribusi Keanggotaan sebesar Rp. 100.000,-(sebagai anggota baru)"
                     orientation="horizontal"
-                    value={field.value}
+                    value={forceMemberPayment ? "yes" : field.value}
                     onValueChange={(val) => field.onChange(val)}
                   >
                     <Radio value="yes">Bersedia</Radio>
-                    <Radio value="no">Tidak Bersedia</Radio>
+                    {!forceMemberPayment && (
+                      <Radio value="no">Tidak Bersedia</Radio>
+                    )}
                   </RadioGroup>
                 )}
               />
+              {forceMemberPayment && (
+                <p className="mt-2 text-xs text-default-500">
+                  Untuk verifikasi data anggota, kontribusi keanggotaan wajib
+                  bersedia dan bukti transfer wajib diunggah.
+                </p>
+              )}
             </div>
           </div>
         </CardBody>

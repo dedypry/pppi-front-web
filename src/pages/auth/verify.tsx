@@ -123,6 +123,7 @@ export default function VerifyEmailPage() {
           diverifikasi oleh admin. Anda tidak perlu login.
         </p>
         <RegisterMember
+          forceMemberPayment
           action={
             <div className="flex justify-end gap-2">
               <Button
