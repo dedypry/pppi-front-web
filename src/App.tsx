@@ -20,6 +20,8 @@ import ResetPasswordPage from "./pages/auth/reset-password";
 import VerifyEmailPage from "./pages/auth/verify";
 import MemberDashboardPage from "./pages/members/dashboard";
 import PartnerPage from "./pages/partner";
+import OrganizationPage from "./pages/organization";
+import KepengurusanPage from "./pages/kepengurusan";
 import AdminLayout from "./components/layouts/admin";
 import BlogPage from "./pages/members/blogs";
 import BlogCreate from "./pages/members/blogs/create";
@@ -58,8 +60,8 @@ function App() {
         <Route element={<ShopOrderHistoryPage />} path="/shop/orders" />
 
         <Route element={<PartnerPage />} path="/partner" />
-        {/* Comming soon */}
-        <Route element={<ComingSoon />} path="/organization" />
+        <Route element={<OrganizationPage />} path="/organization" />
+        <Route element={<KepengurusanPage />} path="/kepengurusan" />
         <Route element={<ComingSoon />} path="/lpk-pppi" />
         <Route element={<ComingSoon />} path="/gallery" />
         <Route element={<ComingSoon />} path="/event/:slug" />

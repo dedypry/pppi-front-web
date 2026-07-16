@@ -50,6 +50,13 @@ export default function AboutButton({ scrolled }: Props) {
             Struktur Organisasi
           </DropdownItem>
           <DropdownItem
+            key={"kepengurusan"}
+            color="primary"
+            onClick={() => route("/kepengurusan")}
+          >
+            Kepengurusan
+          </DropdownItem>
+          <DropdownItem
             key={"lpk"}
             color="primary"
             onClick={() => route("/lpk-pppi")}

@@ -64,6 +64,8 @@ export interface IUser {
   back_title?: string;
   nia: string;
   job_title?: string;
+  region?: string | null;
+  administrator_role?: string | null;
   email: string;
   last_login: string;
   is_active: boolean;

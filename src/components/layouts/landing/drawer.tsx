@@ -19,6 +19,7 @@ import {
   LayoutDashboard,
   MenuIcon,
   Rss,
+  UsersRound,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -61,6 +62,11 @@ export default function LandingDrawer() {
           title: "Struktur Organisasi",
           href: "/organization",
           icon: Atom,
+        },
+        {
+          title: "Kepengurusan",
+          href: "/kepengurusan",
+          icon: UsersRound,
         },
         {
           title: "LPK PPPI",
