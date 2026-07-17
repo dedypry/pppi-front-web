@@ -568,29 +568,12 @@ export default function RegisterMember({
                     label="Pendidikan Terakhir Keperawatan"
                     placeholder="Pilih Pendidikan Terakhir"
                     selectedKey={field.value as any}
-                    value={field.value as any}
                     onSelectionChange={(val) => field.onChange(val)}
                   >
                     {educations.map((item) => (
                       <AutocompleteItem key={item}>{item}</AutocompleteItem>
                     ))}
                   </CustomAutoComplete>
-                  // <CustomSelect
-                  //   {...field}
-                  //   isRequired
-                  //   errorMessage={
-                  //     errors.last_education_nursing?.message ||
-                  //     "Pendidikan Terakhir Keperawatan tidak boleh kosong"
-                  //   }
-                  //   isInvalid={!!errors.last_education_nursing}
-                  //   label="Pendidikan Terakhir Keperawatan"
-                  //   placeholder="Pilih Pendidikan Terakhir"
-                  //   selectedKeys={[field.value]}
-                  // >
-                  //   {educations.map((item) => (
-                  //     <SelectItem key={item}>{item}</SelectItem>
-                  //   ))}
-                  // </CustomSelect>
                 )}
                 rules={{ required: true }}
               />
